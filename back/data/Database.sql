@@ -2,7 +2,8 @@ DROP TABLE IF EXISTS Role;
 DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Film;
 DROP TABLE IF EXISTS Salle;
-
+DROP TABLE IF EXISTS Reservation;
+DROP TABLE IF EXISTS Seance;
 CREATE TABLE Role
 (
     id_role integer primary key autoincrement,

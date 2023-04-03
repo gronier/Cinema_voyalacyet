@@ -4,9 +4,11 @@ import {Button, Container, Navbar, Nav} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Link, Route, Routes, useNavigate} from "react-router-dom";
 import Home from "./Home/Home";
+import Reservation from "./Reservation/Reservation"
+import Seance from "./Seance/Seance"
 import Signin from "./Signin/Signin";
 import Signup from "./Signup/Signup";
-import Items from "./Items/Items";
+// import Items from "./Items/Items";
 import {useCookies} from "react-cookie";
 
 function MyNavBar(props) {
@@ -21,14 +23,17 @@ function MyNavBar(props) {
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand><Link to="/">Home</Link></Navbar.Brand>
-                <Nav.Item><Link to="/items">Items</Link></Nav.Item>
-                {name !== undefined &&
-                    <Nav.Item>Hello {name}</Nav.Item>
-                }
-                {name === undefined ?
-                    <Button variant="outline-success" onClick={() => navigate("/signin")}>connexion</Button> :
-                    <Button variant="outline-danger" onClick={() => props.removeCookie("td05")}>déconnexion</Button>
-                }
+                {/*<Nav.Item><Link to="/items">Items</Link></Nav.Item>*/}
+                <Nav.Item><Link to="/reservation">Reservation</Link></Nav.Item>
+                <Nav.Item><Link to="/seance">Seance</Link></Nav.Item>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <Button variant="outline-success" onClick={() => navigate("/signin")}>
+                        Sign In
+                    </Button>
+                    <Button variant="outline-primary" style={{ marginLeft: "10px" }} onClick={() => navigate("/signup")}>
+                        Sign Up
+                    </Button>
+                </div>
 
             </Container>
         </Navbar>
@@ -42,9 +47,11 @@ export default function App() {
             <MyNavBar cookies={cookies} removeCookie={removeCookie}/>
             <Routes>
                 <Route exact={true} path="/" element={<Home/>}/>
+                <Route exact={true} path="/reservation" element={<Reservation/>}/>
+                <Route exact={true} path="/seance" element={<Seance/>}/>
                 <Route exact={true} path="/signin" element={<Signin setCookie={setCookie}/>}/>
                 <Route exact={true} path="/signup" element={<Signup/>}/>
-                <Route exact={true} path="/items" element={<Items cookies={cookies}/>}/>
+                {/*<Route exact={true} path="/items" element={<Items cookies={cookies}/>}/>*/}
             </Routes>
         </>
     );
