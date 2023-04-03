@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "resetDB": "sqlite3 -init data/Database.sql data/items.db .quit"
+    "resetDB": "sqlite3 -init data/Database.sql data/database.db .quit"
   },
   "keywords": [],
   "author": "",
