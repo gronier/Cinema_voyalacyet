@@ -47,9 +47,6 @@ export default function Signin(props) {
 
                         <Button variant="primary" type="submit">
                             OK
-                        </Button>{"  "}
-                        <Button variant="primary" type="button" onClick={() => navigate("/signup")}>
-                            Créer un compte
                         </Button>
                     </Form>
                 </div>
