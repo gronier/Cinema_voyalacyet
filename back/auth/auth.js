@@ -1,6 +1,6 @@
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
-const db = require("../data/items");
+const db = require("../data/database");
 
 const cfg = require("./config");
 
