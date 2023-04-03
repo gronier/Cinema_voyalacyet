@@ -35,9 +35,30 @@ routes
     })
     .delete('/film/:id',(req,res) => {
         console.log(req.params.id)
-        db.run("delete from Film", [req.params.id],
+        db.run("delete from Role", [req.params.id],
             (err,rows) => {
                 if(err){
+                    return res.json(err).status(401);
+                }
+                res.status(201).json(rows);
+            })
+    })
+    .delete('/Salle/:id' , (req , res) => {
+        db.run(
+            "delete from Film where id_film =? returning *" , req.params.id ,
+            (err, rows) => {
+                if(err){
+                    return res.json(err).status(401);
+                }
+                res.json(rows)
+            }
+        )
+    })
+    .put('/film/:id',(req,res) => {
+        db.get(
+            "UPDATE Film Set nom_film = 'theo test nom film' where id_film=3",
+            (err, rows) => {
+                if (err) {
                     return res.json(err).status(401);
                 }
                 res.status(201).json(rows);
