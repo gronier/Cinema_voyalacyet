@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 
-const routes = require("./routes");
+const routes = require("./routes/routes");
+const route_login = require("./routes/route_login");
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -13,6 +14,7 @@ app
     .use(express.json())
     .use(express.urlencoded({extended: true}))
     .use(routes)
+    .use(route_login)
     .use((req, res) => {
         res.status(404);
         res.json({

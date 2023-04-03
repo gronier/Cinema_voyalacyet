@@ -15,7 +15,7 @@ const opts = {
 
 module.exports = function () {
     const strategy = new Strategy(opts, (payload, done) => {
-        db.get("SELECT * FROM person WHERE per_id = $id", {$id: payload.id}, function (err, row) {
+        db.get("SELECT * FROM person WHERE id_user = $id", {$id: payload.id}, function (err, row) {
             if (err) {
                 return done(err, null);
             }
