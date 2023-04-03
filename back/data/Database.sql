@@ -30,7 +30,7 @@ CREATE TABLE Salle
 (
     id_salle integer primary key autoincrement,
     nom_salle varchar not null,
-    nbPlace_salle integer not null,
+    nbPlace_salle integer not null
 );
 CREATE TABLE Seance
 (
