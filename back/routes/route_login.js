@@ -8,7 +8,7 @@ module.exports = routes_login;
 routes_login
     .use(auth.initialize())
     .post("/signup", (req, res) => {
-            login.register(req,res)
+                login.register(req,res)
         }
     )
     .post("/signin", (req, res) => {
