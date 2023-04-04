@@ -8,8 +8,13 @@ import Reservation from "./Reservation/Reservation"
 import Seance from "./Seance/Seance"
 import Signin from "./Signin/Signin";
 import Signup from "./Signup/Signup";
-// import Items from "./Items/Items";
+
+import Salle from "./Salle/Salle";
+
 import {useCookies} from "react-cookie";
+import Creation_salle from "./Salle/Creation_salle";
+
+
 
 function MyNavBar(props) {
     const navigate = useNavigate();
@@ -23,9 +28,11 @@ function MyNavBar(props) {
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand><Link to="/">Home</Link></Navbar.Brand>
+
                 {/*<Nav.Item><Link to="/items">Items</Link></Nav.Item>*/}
                 <Nav.Item><Link to="/reservation">Reservation</Link></Nav.Item>
                 <Nav.Item><Link to="/seance">Seance</Link></Nav.Item>
+                <Nav.Item><Link to="/Salle">Salle</Link></Nav.Item>
                 <div style={{ display: "flex", alignItems: "center" }}>
                     <Button variant="outline-success" onClick={() => navigate("/signin")}>
                         Sign In
@@ -34,6 +41,7 @@ function MyNavBar(props) {
                         Sign Up
                     </Button>
                 </div>
+
 
             </Container>
         </Navbar>
@@ -51,7 +59,9 @@ export default function App() {
                 <Route exact={true} path="/seance" element={<Seance/>}/>
                 <Route exact={true} path="/signin" element={<Signin setCookie={setCookie}/>}/>
                 <Route exact={true} path="/signup" element={<Signup/>}/>
-                {/*<Route exact={true} path="/items" element={<Items cookies={cookies}/>}/>*/}
+                <Route exact={true} path="/Salle" element={<Salle cookies={cookies}/>}/>
+                <Route exact={true} path="/createSalle" element={<Creation_salle/>}/>
+
             </Routes>
         </>
     );
