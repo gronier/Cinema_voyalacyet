@@ -60,6 +60,16 @@ routes
             }
         )
     })
+    .get("/Salle/:id" , (req , res) =>{
+        db.get(
+            "select * from Salle where id_salle =?" , req.params.id ,
+            (err, rows) => {
+
+                res.json(rows)
+
+            }
+        )
+    })
 
 
 

@@ -36,12 +36,20 @@ export default function Salle(props) {
 
     async function deleteSalle(id) {
         try {
-            axios.delete(
-                `http://localhost:8000/Salle/${id}`
-            ).then( () => {
-                alert("Salle deleted");
-                window.location.reload();
-            })
+           var confirm =  window.confirm("Voulez-vous confirmer l'action ?");
+
+           if(confirm == true)
+           {
+               axios.delete(
+                   `http://localhost:8000/Salle/${id}`
+               ).then( () => {
+                   alert("Salle deleted");
+                   window.location.reload();
+               })
+           }
+
+
+
         } catch (error) {
             console.log("error", error);
         }
@@ -84,7 +92,7 @@ export default function Salle(props) {
                         <td>{i.nom_salle}</td>
 
                         <td>{i.nbPlace_salle}</td>
-                        <td><button type="button" className="btn btn-danger" onClick={() => deleteSalle(i.id_salle)}>delete</button>  <a href="#">Update</a> </td>
+                        <td><button type="button" className="btn btn-danger" onClick={() => deleteSalle(i.id_salle)}>Suppression</button>  <a href={`/updateSalle/${i.id_salle}`}  type="button" className="btn btn-warning">Modification</a> </td>
                         
 
                     </tr>
