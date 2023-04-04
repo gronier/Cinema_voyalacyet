@@ -8,6 +8,7 @@ import Signup from "../Signup/Signup";
 import Items from "../Items/Items";
 import {Button, Container, Form} from "react-bootstrap";
 import data from "bootstrap/js/src/dom/data";
+import { redirect } from "react-router-dom";
 
 
 
@@ -28,6 +29,7 @@ export default function Creation_salle(props) {
 
 
             setSalle({nom_salle: "", nbPlace_salle: ""});
+            document.location.replace("http://localhost:3000/Salle");
         } catch (e) {
             console.error("ERR", e);
         }
