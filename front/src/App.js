@@ -21,8 +21,8 @@ function MyNavBar(props) {
     const navigate = useNavigate();
 
     let name;
-    if (props.cookies && props.cookies.td05) {
-        name = props.cookies.td05.name;
+    if (props.cookies && props.cookies.voyalacyet) {
+        name = props.cookies.voyalacyet.name;
     }
 
     return (
@@ -34,14 +34,14 @@ function MyNavBar(props) {
                 <Nav.Item><Link to="/reservation">Reservation</Link></Nav.Item>
                 <Nav.Item><Link to="/seance">Seance</Link></Nav.Item>
                 <Nav.Item><Link to="/Salle">Salle</Link></Nav.Item>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <Button variant="outline-success" onClick={() => navigate("/signin")}>
-                        Sign In
-                    </Button>
-                    <Button variant="outline-primary" style={{ marginLeft: "10px" }} onClick={() => navigate("/signup")}>
-                        Sign Up
-                    </Button>
-                </div>
+                {name !== undefined &&
+                    <Nav.Item>Hello {name}</Nav.Item>
+                }
+                {name === undefined ?< >
+                    <Button variant="outline-success" onClick={() => navigate("/signin")}>Connexion</Button>
+                    <Button variant="outline-success" onClick={() => navigate("/signup")}>Inscription</Button> < /> :
+                    <Button variant="outline-danger" onClick={() => props.removeCookie("voyalacyet")}>déconnexion</Button>
+                }
 
 
             </Container>
@@ -50,7 +50,7 @@ function MyNavBar(props) {
 }
 
 export default function App() {
-    const [cookies, setCookie, removeCookie] = useCookies(["td05"]);
+    const [cookies, setCookie, removeCookie] = useCookies(["voyalacyet"]);
     return (
         <>
             <MyNavBar cookies={cookies} removeCookie={removeCookie}/>

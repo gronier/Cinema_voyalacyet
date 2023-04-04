@@ -19,7 +19,7 @@ export default function Signin(props) {
                 alert("échec de connexion");
             } else {
                 alert(response.token);
-                props.setCookie("td05", {name: person.email, token: response.token}, "/");
+                props.setCookie("voyalacyet", {name: person.email, token: response.token}, "/");
             }
             setPerson({name: "", password: ""});
         } catch (e) {

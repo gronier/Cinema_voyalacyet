@@ -22,10 +22,10 @@ export default function Salle(props) {
                 url: "http://localhost:8000/Salle",
           })
             setSalle(response.data);
-            if (props.cookies && props.cookies.td05) {
+            if (props.cookies && props.cookies.voyalacyet) {
                 const response = await axios.request({
                     url: "http://localhost:8000/Salle",
-                    headers: {Authorization: "Bearer " + props.cookies.td05.token}
+                    headers: {Authorization: "Bearer " + props.cookies.voyalacyet.token}
                 })
                 setSalle(response.data);
             }
