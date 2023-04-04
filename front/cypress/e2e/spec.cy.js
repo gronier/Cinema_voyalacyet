@@ -13,5 +13,34 @@ describe('My First Test',  ()  => {
     cy.url().should('include', '/Salle');
 
   });
+  it('user test', () => {
+    cy.visit('http://localhost:3000');
+    cy.contains('Sign Up').click();
+    cy.url().should('include', '/signup');
+
+    const nom = 'test';
+    const prenom = 'testo';
+    const email = 'test@test.com';
+    const password = 'qslfidjhqiusgduyqfd_shqdfyfdqiosbcfdlwxcgouf-57635763';
+
+    cy.get("#name").type(nom);
+    cy.get("#firstname").type(prenom);
+    cy.get("#email").type(email);
+    cy.get("#psw").type(password);
+
+    cy.get("#ok").click()
+
+    cy.contains('Sign In').click();
+    cy.url().should('include', '/signin');
+
+
+    cy.get("#email").type(email);
+    cy.get("#psw").type(password);
+
+    // cy.get("#ok").click()
+
+
+
+  });
 
 });
