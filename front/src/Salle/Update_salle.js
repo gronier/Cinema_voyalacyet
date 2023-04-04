@@ -1,34 +1,50 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useCookies} from "react-cookie";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useParams} from "react-router-dom";
 import Home from "../Home/Home";
 import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
 import Items from "../Items/Items";
 import {Button, Container, Form} from "react-bootstrap";
 import data from "bootstrap/js/src/dom/data";
-import { redirect } from "react-router-dom";
 
 
 
 
-export default function Creation_salle(props) {
 
-    const [salle, setSalle] = useState({nom_salle: "",nbPlace_salle:""});
+export default function Update_salle(props) {
+    let params = useParams();
+
+    const [salle, setUpdateSalle] = useState({nom_salle: "",nbPlace_salle:""});
+
+
+    async function getSalle() {
+        const data = (await axios.get("http://localhost:8000/Salle/"+params.id)).data;
+        console.log("get auteur", data);
+        setUpdateSalle(data);
+    }
+
+    useEffect(() => {
+        (async () => {
+            await getSalle();
+        })();
+    }, []);
 
     function handleTextChangeSalle(e, label) {
-        setSalle({...salle, [label]: e.target.value})
+        setUpdateSalle({...salle, [label]: e.target.value})
     }
 
     async function handleSubmitSalle(e) {
         e.preventDefault();
         try {
+            var confirm =  window.confirm("Voulez-vous confirmer l'action ?");
 
-            const response = (await axios.post("http://localhost:8000/Salle" , salle  ) ).data;
+            if(confirm == true) {
+                const response = (await axios.patch("http://localhost:8000/Salle/" + params.id, salle)).data;
+            }
 
-
-            setSalle({nom_salle: "", nbPlace_salle: ""});
+            setUpdateSalle({nom_salle: "", nbPlace_salle: ""});
             document.location.replace("http://localhost:3000/Salle");
         } catch (e) {
             console.error("ERR", e);
@@ -41,9 +57,9 @@ export default function Creation_salle(props) {
 
     return (
         <Container>
-            <div className="row justify-content-md-center">
-                <div className="col col-lg-3">
-                    <h3 className="person-title">Créer une Salle</h3>
+            <div className="row justify-content-lg-center">
+                <div className="p-2 col col-6">
+                    <h3 className="person-title">Modification de la Salle {salle.nom_salle}</h3>
                     <Form onSubmit={handleSubmitSalle}>
                         <Form.Group className="mb-3" controlId="personNom">
                             <Form.Label>Nom salle</Form.Label>

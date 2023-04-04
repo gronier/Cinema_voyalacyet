@@ -37,7 +37,6 @@ routes
         )
     })
     .post("/Salle",(req , res) =>{
-        console.log("test" , req.body);
         db.run("insert into Salle (nom_salle , nbPlace_salle) values (?,?)" ,
             req.body.nom_salle , req.body.nbPlace_salle,
             (err) => {
@@ -68,6 +67,7 @@ routes
             }
         )
     })
+    
 
 
 
