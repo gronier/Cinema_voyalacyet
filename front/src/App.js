@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import React from "react";
+import React, {useState} from "react";
 import {Button, Container, Navbar, Nav} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Link, Route, Routes, useNavigate} from "react-router-dom";
@@ -26,14 +26,13 @@ function MyNavBar(props) {
                 {/*<Nav.Item><Link to="/items">Items</Link></Nav.Item>*/}
                 <Nav.Item><Link to="/reservation">Reservation</Link></Nav.Item>
                 <Nav.Item><Link to="/seance">Seance</Link></Nav.Item>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <Button variant="outline-success" onClick={() => navigate("/signin")}>
-                        Sign In
-                    </Button>
-                    <Button variant="outline-primary" style={{ marginLeft: "10px" }} onClick={() => navigate("/signup")}>
-                        Sign Up
-                    </Button>
-                </div>
+                {name !== undefined &&
+                    <Nav.Item>Hello {name}</Nav.Item>
+                }
+                {name === undefined ?
+                    <Button variant="outline-success" onClick={() => navigate("/signin")}>connexion</Button> :
+                    <Button variant="outline-danger" onClick={() => props.removeCookie("td05")}>déconnexion</Button>
+                }
 
             </Container>
         </Navbar>
