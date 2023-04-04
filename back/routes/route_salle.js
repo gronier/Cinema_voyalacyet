@@ -17,6 +17,15 @@ routes
             })
         }
     )
+    .get('/Salle/:id' , (req , res) => {
+        db.get(
+            "select * from Salle where id_salle =?" , req.params.id ,
+            (err, rows) => {
+                res.json(rows)
+
+            }
+        )
+    })
     .delete('/Salle/:id' , (req , res) => {
         db.get(
             "delete from Salle where id_salle =?" , req.params.id ,
@@ -28,10 +37,9 @@ routes
         )
     })
     .post("/Salle",(req , res) =>{
-
         console.log("test" , req.body);
         db.run("insert into Salle (nom_salle , nbPlace_salle) values (?,?)" ,
-            req.body.nom_salle , +req.body.nbPlace_salle,
+            req.body.nom_salle , req.body.nbPlace_salle,
             (err) => {
                 if ( err ) {
                     console . error (" Database error ", err ) ;
