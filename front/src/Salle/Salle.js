@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useCookies} from "react-cookie";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useNavigate} from "react-router-dom";
 import Home from "../Home/Home";
 import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
@@ -49,9 +49,23 @@ export default function Salle(props) {
         }
     }
 
-
+    let name;
+    let token;
+    let role;
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if (props.cookies && props.cookies.voyalacyet) {
+            name = props.cookies.voyalacyet.name;
+            token = props.cookies.voyalacyet.token
+            role = jwt_decode(token)
+        }
+        if(token === undefined || role.role !== 3) {
+            navigate('/')
+        }
+    },[])
 
     useEffect(() => {
+
         (async () => {
             await getSalle();
         })();

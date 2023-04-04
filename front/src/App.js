@@ -41,7 +41,7 @@ function MyNavBar(props) {
                         <Nav.Item><Link to="/Salle">Salle</Link></Nav.Item>
                         < /> : <></>
                 }
-                
+
                 {name !== undefined &&
                     <Nav.Item>Hello {name}</Nav.Item>
                 }
@@ -64,13 +64,13 @@ export default function App() {
             <MyNavBar cookies={cookies} removeCookie={removeCookie}/>
             <Routes>
                 <Route exact={true} path="/" element={<Home/>}/>
-                <Route exact={true} path="/reservation" element={<Reservation/>}/>
-                <Route exact={true} path="/seance" element={<Seance/>}/>
+                <Route exact={true} path="/reservation" element={<Reservation cookies={cookies}/>}/>
+                <Route exact={true} path="/seance" element={<Seance cookies={cookies}/>}/>
                 <Route exact={true} path="/signin" element={<Signin setCookie={setCookie}/>}/>
                 <Route exact={true} path="/signup" element={<Signup/>}/>
                 <Route exact={true} path="/Salle" element={<Salle cookies={cookies}/>}/>
-                <Route exact={true} path="/createSalle" element={<Creation_salle/>}/>
-                <Route exact={true} path="/updateSalle/:id" element={<Update_salle/>}/>
+                <Route exact={true} path="/createSalle" element={<Creation_salle cookies={cookies}/>}/>
+                <Route exact={true} path="/updateSalle/:id" element={<Update_salle cookies={cookies}/>}/>
 
             </Routes>
         </>
