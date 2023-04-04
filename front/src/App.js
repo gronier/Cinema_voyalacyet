@@ -8,6 +8,7 @@ import Signin from "./Signin/Signin";
 import Signup from "./Signup/Signup";
 import Items from "./Items/Items";
 import {useCookies} from "react-cookie";
+import Film from "./Film/Film";
 
 function MyNavBar(props) {
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ function MyNavBar(props) {
             <Container>
                 <Navbar.Brand><Link to="/">Home</Link></Navbar.Brand>
                 <Nav.Item><Link to="/items">Items</Link></Nav.Item>
+                <Nav.Item><Link to="/films">Films</Link></Nav.Item>
                 {name !== undefined &&
                     <Nav.Item>Hello {name}</Nav.Item>
                 }
@@ -45,6 +47,7 @@ export default function App() {
                 <Route exact={true} path="/signin" element={<Signin setCookie={setCookie}/>}/>
                 <Route exact={true} path="/signup" element={<Signup/>}/>
                 <Route exact={true} path="/items" element={<Items cookies={cookies}/>}/>
+                <Route exact={true} path="/films" element={<Film/>}/>
             </Routes>
         </>
     );

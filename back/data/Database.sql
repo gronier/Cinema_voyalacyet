@@ -2,6 +2,9 @@ DROP TABLE IF EXISTS Role;
 DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Film;
 DROP TABLE IF EXISTS Salle;
+DROP TABLE IF EXISTS Seance;
+DROP TABLE IF EXISTS Reservation;
+
 
 CREATE TABLE Role
 (
@@ -30,7 +33,7 @@ CREATE TABLE Salle
 (
     id_salle integer primary key autoincrement,
     nom_salle varchar not null,
-    nbPlace_salle integer not null,
+    nbPlace_salle integer not null
 );
 CREATE TABLE Seance
 (
@@ -41,8 +44,7 @@ CREATE TABLE Seance
     prix_seance nu not null ,
     id_film integer not null,
     duree_seance varchar not null ,
-    FOREIGN KEY (id_film) REFERENCES Film(id_film),
-    FOREIGN KEY (duree_seance) REFERENCES Film(duree_film)
+    FOREIGN KEY (id_film) REFERENCES Film(id_film)
 
 );
 CREATE TABLE Reservation
@@ -54,5 +56,5 @@ CREATE TABLE Reservation
     FOREIGN KEY (id_user) REFERENCES User(id_user),
     FOREIGN KEY (id_seance) REFERENCES Seance(id_seance)
 );
-INSERT INTO Role (name_role) VALUES ('Client'),('Etudiant'),('Employer');
+INSERT INTO Role (name_role) VALUES ('Client'),('Etudiant'),('Employé');
 -- INSERT INTO person(per_name,per_password) VALUES ("toto","$2b$10$D9H96iHFqk7q4YsdBxgP.uBeqFdfE0N/h3nR64oIuciuIfN8KaMRO");
