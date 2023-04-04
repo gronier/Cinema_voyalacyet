@@ -4,7 +4,7 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 export default function Signin(props) {
-    const [person, setPerson] = useState({name: "", password: ""});
+    const [person, setPerson] = useState({email: "", password: ""});
     const navigate = useNavigate();
 
     function handleTextChange(e, label) {
@@ -19,7 +19,7 @@ export default function Signin(props) {
                 alert("échec de connexion");
             } else {
                 alert(response.token);
-                props.setCookie("td05", {name: person.name, token: response.token}, "/");
+                props.setCookie("voyalacyet", {name: person.email, token: response.token}, "/");
             }
             setPerson({name: "", password: ""});
         } catch (e) {
@@ -33,10 +33,10 @@ export default function Signin(props) {
                 <div className="col col-lg-3">
                     <h1 className="person-title">Se connecter</h1>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3" controlId="personName">
-                            <Form.Label>nom</Form.Label>
-                            <Form.Control type="text" placeholder="nom" value={person.name}
-                                          onChange={e => handleTextChange(e, "name")}/>
+                        <Form.Group className="mb-3" controlId="personEmail">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="text" placeholder="Email" value={person.email}
+                                          onChange={e => handleTextChange(e, "email")}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="personPassword">
@@ -47,9 +47,6 @@ export default function Signin(props) {
 
                         <Button variant="primary" type="submit">
                             OK
-                        </Button>{"  "}
-                        <Button variant="primary" type="button" onClick={() => navigate("/signup")}>
-                            Créer un compte
                         </Button>
                     </Form>
                 </div>

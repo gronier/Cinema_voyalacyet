@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 export default function Signup(){
-    const [person, setPerson] = useState({name: "", password: ""});
+    const [person, setPerson] = useState({nom: "",prenom:"",email:"", password: "",role:"",});
 
     function handleTextChange(e, label) {
         setPerson({...person, [label]: e.target.value})
@@ -20,7 +20,7 @@ export default function Signup(){
                 alert(response.id);
                 // props.setCookie("td05", {name: person.name, token: response.token}, "/");
             }
-            setPerson({name: "", password: ""});
+            setPerson({nom: "",prenom:"",email:"", password: "",role:"",});
         } catch (e) {
             console.error("ERR", e);
         }
@@ -32,18 +32,33 @@ export default function Signup(){
                 <div className="col col-lg-3">
                     <h1 className="person-title">Créer un compte</h1>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3" controlId="personName">
-                            <Form.Label>nom</Form.Label>
-                            <Form.Control type="text" placeholder="nom" value={person.name}
-                                          onChange={e => handleTextChange(e, "name")}/>
+                        <Form.Group className="mb-3" controlId="personNom">
+                            <Form.Label>Nom</Form.Label>
+                            <Form.Control type="text" placeholder="Nom" value={person.nom}
+                                          onChange={e => handleTextChange(e, "nom")}/>
                         </Form.Group>
-
+                        <Form.Group className="mb-3" controlId="personPrenom">
+                            <Form.Label>Prenom</Form.Label>
+                            <Form.Control type="text" placeholder="Prenom" value={person.prenom}
+                                          onChange={e => handleTextChange(e, "prenom")}/>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="personEmail">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="text" placeholder="Email" value={person.email}
+                                          onChange={e => handleTextChange(e, "email")}/>
+                        </Form.Group>
                         <Form.Group className="mb-3" controlId="personPassword">
                             <Form.Label>mot de passe</Form.Label>
                             <Form.Control type="password" placeholder="" value={person.password}
                                           onChange={e => handleTextChange(e, "password")}/>
                         </Form.Group>
-
+                        <Form.Group className="mb-3" controlId="personRole">
+                            <Form.Label>Role</Form.Label>
+                            <Form.Select  onChange={e => handleTextChange(e, "role")} defaultValue={'1'}>
+                                <option value={"1"}>Client</option>
+                                <option value={"2"}>Etudiant</option>
+                            </Form.Select>
+                        </Form.Group>
                         <Button variant="primary" type="submit">
                             OK
                         </Button>
