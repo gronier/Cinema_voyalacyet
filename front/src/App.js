@@ -9,6 +9,8 @@ import Signup from "./Signup/Signup";
 import Items from "./Items/Items";
 import {useCookies} from "react-cookie";
 import Film from "./Film/Film";
+import FormFilm from "./Film/FormFilm";
+import UpdateFormFilm from "./Film/UpdateFormFilm";
 
 function MyNavBar(props) {
     const navigate = useNavigate();
@@ -48,6 +50,8 @@ export default function App() {
                 <Route exact={true} path="/signup" element={<Signup/>}/>
                 <Route exact={true} path="/items" element={<Items cookies={cookies}/>}/>
                 <Route exact={true} path="/films" element={<Film/>}/>
+                <Route exact={true} path="/createFilm" element={<FormFilm/>}/>
+                <Route exact={true} path="/updateFilm/:id" element={<UpdateFormFilm/>}/>
             </Routes>
         </>
     );

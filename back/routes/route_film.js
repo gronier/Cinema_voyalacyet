@@ -14,7 +14,7 @@ routes
                 $nom_film: req.body.nom_film,
                 $affiche: req.body.affiche,
                 $duree_film: req.body.duree_film,
-                $desc: req.body.desc
+                $desc: req.body.description_film
             },
             (err,row) => {
                 if(err){
@@ -31,6 +31,15 @@ routes
                 return res.json(err).status(401);
             }
             res.status(201).json(rows);
+            })
+    })
+    .get('/film/:id',(req,res) => {
+        db.all("select * from Film where id_film = ?",[req.params.id],
+            (err,rows) => {
+                if(err){
+                    return res.json(err).status(401);
+                }
+                res.status(201).json(rows);
             })
     })
     .delete('/film/:id',(req,res) => {
@@ -50,7 +59,7 @@ routes
                 $nom_film: req.body.nom_film,
                 $affiche: req.body.affiche,
                 $duree_film: req.body.duree_film,
-                $desc: req.body.desc
+                $desc: req.body.description_film
             },
             (err, rows) => {
                 if (err) {
