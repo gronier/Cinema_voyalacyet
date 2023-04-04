@@ -51,7 +51,6 @@ export default function App() {
                 <Route exact={true} path="/seance" element={<Seance/>}/>
                 <Route exact={true} path="/signin" element={<Signin setCookie={setCookie}/>}/>
                 <Route exact={true} path="/signup" element={<Signup/>}/>
-                {/*<Route exact={true} path="/items" element={<Items cookies={cookies}/>}/>*/}
             </Routes>
         </>
     );
