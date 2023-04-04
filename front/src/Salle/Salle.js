@@ -34,6 +34,21 @@ export default function Salle(props) {
         }
     }
 
+    async function deleteSalle(id) {
+        try {
+            axios.delete(
+                `http://localhost:8000/Salle/${id}`
+            ).then( () => {
+                alert("Salle deleted");
+                window.location.reload();
+            })
+        } catch (error) {
+            console.log("error", error);
+        }
+    }
+
+
+
     useEffect(() => {
         (async () => {
             await getSalle();
@@ -69,7 +84,7 @@ export default function Salle(props) {
                         <td>{i.nom_salle}</td>
 
                         <td>{i.nbPlace_salle}</td>
-                        <td><a href="#">delete</a>  <a href="#">Update</a> </td>
+                        <td><button type="button" className="btn btn-danger" onClick={() => deleteSalle(i.id_salle)}>delete</button>  <a href="#">Update</a> </td>
                         
 
                     </tr>
