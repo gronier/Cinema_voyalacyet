@@ -1,5 +1,13 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import {useCookies} from "react-cookie";
+import {Route, Routes} from "react-router-dom";
+import Home from "../Home/Home";
+import Signin from "../Signin/Signin";
+import Signup from "../Signup/Signup";
+import Items from "../Items/Items";
+import Creation_salle from "./Creation_salle";
+
 
 
 
@@ -32,10 +40,18 @@ export default function Salle(props) {
         })();
     }, []);
 
+
+
+
     return (
 
         <div className="container">
-            <div className="p-2">Gestion des salles</div>
+            <div className="p-2 d-flex justify-content-between">
+                <div>Gestion des salles</div>
+                <a href="/createSalle" type="button" className="btn btn-success">Crée une salle</a>
+
+
+            </div>
 
             <table className="table">
                 <thead>
@@ -49,12 +65,12 @@ export default function Salle(props) {
                 </thead>
                 <tbody>
                 {Salles.map(i =>
-                    <tr>
+                    <tr key={i.id_salle}>
                         <td>{i.nom_salle}</td>
 
                         <td>{i.nbPlace_salle}</td>
                         <td><a href="#">delete</a>  <a href="#">Update</a> </td>
-
+                        
 
                     </tr>
                 )}
@@ -66,5 +82,11 @@ export default function Salle(props) {
         </div>
 
 
+
+
+
+
     );
 }
+
+

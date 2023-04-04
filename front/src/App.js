@@ -9,6 +9,7 @@ import Signup from "./Signup/Signup";
 import Items from "./Items/Items";
 import Salle from "./Salle/Salle";
 import {useCookies} from "react-cookie";
+import Creation_salle from "./Salle/Creation_salle";
 
 
 
@@ -50,6 +51,7 @@ export default function App() {
                 <Route exact={true} path="/signup" element={<Signup/>}/>
                 <Route exact={true} path="/items" element={<Items cookies={cookies}/>}/>
                 <Route exact={true} path="/Salle" element={<Salle cookies={cookies}/>}/>
+                <Route exact={true} path="/createSalle" element={<Creation_salle/>}/>
             </Routes>
         </>
     );
