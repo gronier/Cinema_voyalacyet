@@ -7,6 +7,7 @@ import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
 import Items from "../Items/Items";
 import Creation_salle from "./Creation_salle";
+import jwt_decode from "jwt-decode";
 
 
 
@@ -22,13 +23,6 @@ export default function Salle(props) {
                 url: "http://localhost:8000/Salle",
           })
             setSalle(response.data);
-            if (props.cookies && props.cookies.voyalacyet) {
-                const response = await axios.request({
-                    url: "http://localhost:8000/Salle",
-                    headers: {Authorization: "Bearer " + props.cookies.voyalacyet.token}
-                })
-                setSalle(response.data);
-            }
         } catch (error) {
             console.log("error", error);
         }

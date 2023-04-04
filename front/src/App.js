@@ -10,30 +10,38 @@ import Signin from "./Signin/Signin";
 import Signup from "./Signup/Signup";
 
 import Salle from "./Salle/Salle";
-
 import {useCookies} from "react-cookie";
 import Creation_salle from "./Salle/Creation_salle";
 import Update_salle from "./Salle/Update_salle";
-
+import jwt_decode from "jwt-decode";
 
 
 function MyNavBar(props) {
     const navigate = useNavigate();
 
     let name;
+    let token;
     if (props.cookies && props.cookies.voyalacyet) {
         name = props.cookies.voyalacyet.name;
+        token = props.cookies.voyalacyet.token
+        var role = jwt_decode(token)
+        console.log(role)
     }
 
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand><Link to="/">Home</Link></Navbar.Brand>
+                {token === undefined ?< >
+                    <Navbar.Brand><Link to="/">Home</Link></Navbar.Brand>
 
-                {/*<Nav.Item><Link to="/items">Items</Link></Nav.Item>*/}
-                <Nav.Item><Link to="/reservation">Reservation</Link></Nav.Item>
-                <Nav.Item><Link to="/seance">Seance</Link></Nav.Item>
-                <Nav.Item><Link to="/Salle">Salle</Link></Nav.Item>
+                < />: <> <Navbar.Brand><Link to="/">Home</Link></Navbar.Brand>
+                       <Nav.Item><Link to="/reservation">Reservation</Link></Nav.Item> </>}
+                {token !== undefined && role.role ===3 ? < >
+                        <Nav.Item><Link to="/seance">Seance</Link></Nav.Item>
+                        <Nav.Item><Link to="/Salle">Salle</Link></Nav.Item>
+                        < /> : <></>
+                }
+                
                 {name !== undefined &&
                     <Nav.Item>Hello {name}</Nav.Item>
                 }

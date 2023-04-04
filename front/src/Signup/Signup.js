@@ -20,7 +20,7 @@ export default function Signup(){
                 alert(response.id);
                 // props.setCookie("td05", {name: person.name, token: response.token}, "/");
             }
-            setPerson({name: "", password: ""});
+            setPerson({nom: "",prenom:"",email:"", password: "",role:"",});
         } catch (e) {
             console.error("ERR", e);
         }
@@ -54,7 +54,7 @@ export default function Signup(){
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="personRole">
                             <Form.Label>Role</Form.Label>
-                            <Form.Select  onChange={e => handleTextChange(e, "role")}>
+                            <Form.Select  onChange={e => handleTextChange(e, "role")} defaultValue={'1'}>
                                 <option value={"1"}>Client</option>
                                 <option value={"2"}>Etudiant</option>
                             </Form.Select>
