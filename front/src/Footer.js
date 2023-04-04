@@ -6,7 +6,7 @@ import {
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 const Footer = () => {
     return (
-        <MDBFooter className='text-center text-white' style={{ backgroundColor: '#f1f1f1'}}>
+        <MDBFooter className='text-center text-white' style={{ backgroundColor: '#f1f1f1', marginTop: 500}}>
             <MDBContainer className='pt-4'>
                 <section className='mb-4'>
                     <div className="social-icons">
