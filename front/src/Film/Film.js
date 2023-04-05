@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 export default function Film(props){
     const [films,setFilms] = useState([])
@@ -25,12 +26,15 @@ export default function Film(props){
 
 
     function deleteFilm(id){
-        axios.delete(
-            `http://localhost:8000/film/${id}`
-        ).then( () => {
-            alert("Film deleted");
-            document.location.replace("http://localhost:3000/films");
-        })
+        let confirm = window.confirm("Voulez-vous supprimer le film ? ")
+        if(confirm === true){
+            axios.delete(
+                `http://localhost:8000/film/${id}`
+            ).then( () => {
+                alert("Film deleted");
+                document.location.replace("http://localhost:3000/films");
+            })
+        }
     }
 
 
@@ -58,10 +62,13 @@ export default function Film(props){
                     {films.map((i,index) =>
                         <tr>
                             <td>{i.nom_film}</td>
-                            <td>{i.affiche}</td>
+                            <td><img src={i.affiche} width="100px" height="150px" alt="img_film"/></td>
                             <td>{i.duree_film}</td>
                             <td>{i.description_film}</td>
-                            <td><button type="button" className="btn btn-danger" onClick={() => deleteFilm(i.id_film)}>Suppression</button>  <a href={`/updateFilm/${i.id_film}`}  type="button" className="btn btn-warning">Modification</a> </td>
+                            <td>
+                                <button type="button" className="btn btn-danger" onClick={() => deleteFilm(i.id_film)}>Suppression</button>
+                                <button className="btn btn-warning"><Link to={"/updateFilm/"+i.id_film} className={"text-decoration-none"}>Modification</Link></button>
+                            </td>
                         </tr>
                     )}
                     </tbody>

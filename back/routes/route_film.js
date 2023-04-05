@@ -34,7 +34,7 @@ routes
             })
     })
     .get('/film/:id',(req,res) => {
-        db.all("select * from Film where id_film = ?",[req.params.id],
+        db.get("select * from Film where id_film = ?",[req.params.id],
             (err,rows) => {
                 if(err){
                     return res.json(err).status(401);

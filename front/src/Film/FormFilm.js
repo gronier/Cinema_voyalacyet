@@ -45,7 +45,7 @@ export default function FormFilm(props) {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>Affiche du film</Form.Label>
+                            <Form.Label>Affiche du film (url de l'image)</Form.Label>
                             <Form.Control type="text" placeholder="Affiche du film"
                                           value={film.affiche} name="affiche" onChange={handleTextChangeFilm}/>
                         </Form.Group>
