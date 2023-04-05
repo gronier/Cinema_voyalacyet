@@ -38,22 +38,22 @@ export default function Signup(){
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="personNom">
                             <Form.Label>Nom</Form.Label>
-                            <Form.Control type="text" placeholder="Nom" value={person.nom}
+                            <Form.Control id="name" type="text" placeholder="Nom" value={person.nom}
                                           onChange={e => handleTextChange(e, "nom")}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="personPrenom">
                             <Form.Label>Prenom</Form.Label>
-                            <Form.Control type="text" placeholder="Prenom" value={person.prenom}
+                            <Form.Control id="firstname" type="text" placeholder="Prenom" value={person.prenom}
                                           onChange={e => handleTextChange(e, "prenom")}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="personEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="text" placeholder="Email" value={person.email}
+                            <Form.Control id="email" type="text" placeholder="Email" value={person.email}
                                           onChange={e => handleTextChange(e, "email")}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="personPassword">
                             <Form.Label>mot de passe</Form.Label>
-                            <Form.Control type="password" placeholder="" value={person.password}
+                            <Form.Control id="psw" type="password" placeholder="" value={person.password}
                                           onChange={e => handleTextChange(e, "password")}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="personRole">
@@ -66,7 +66,7 @@ export default function Signup(){
 
                             </Form.Select>
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <Button id="ok" variant="primary" type="submit">
                             OK
                         </Button>
                     </Form>
