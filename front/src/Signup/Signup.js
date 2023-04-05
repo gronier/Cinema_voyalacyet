@@ -1,10 +1,12 @@
 import {Button, Container, Form} from "react-bootstrap";
 import {useState} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 
 export default function Signup(){
     const [person, setPerson] = useState({nom: "",prenom:"",email:"", password: "",role:"",});
+    const navigate = useNavigate()
 
     function handleTextChange(e, label) {
         setPerson({...person, [label]: e.target.value})
@@ -17,10 +19,12 @@ export default function Signup(){
             if (response.id === undefined) {
                 alert("échec de connexion");
             } else {
-                alert(response.id);
+                alert("Utilisateur Crée");
+                navigate('/signin')
+
                 // props.setCookie("td05", {name: person.name, token: response.token}, "/");
             }
-            setPerson({name: "", password: ""});
+            setPerson({nom: "",prenom:"",email:"", password: "",role:"",});
         } catch (e) {
             console.error("ERR", e);
         }
@@ -54,9 +58,12 @@ export default function Signup(){
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="personRole">
                             <Form.Label>Role</Form.Label>
-                            <Form.Select  onChange={e => handleTextChange(e, "role")}>
+                            <Form.Select  onChange={e => handleTextChange(e, "role")} defaultValue={'1'}>
+                                <option> - Selectionne ton role - </option>
                                 <option value={"1"}>Client</option>
                                 <option value={"2"}>Etudiant</option>
+                                <option value={"3"}>Employée</option>
+
                             </Form.Select>
                         </Form.Group>
                         <Button id="ok" variant="primary" type="submit">

@@ -35,7 +35,6 @@ function register(req,res){
             },
             (err, row) => {
                 if (err) {
-                    console.log(req.body)
                     return res.json(err).status(401);
                 }
                 return res.json({id: row.id_user}).status(201);
