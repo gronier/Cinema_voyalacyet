@@ -35,9 +35,10 @@ export default function Signin(props) {
                     <Form style={{marginTop:30}} onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="personEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="text" placeholder="Email" value={person.email}
+                            <Form.Control id="email" type="text" placeholder="Email" value={person.email}
                                           onChange={e => handleTextChange(e, "email")}/>
                         </Form.Group>
+
 
                         <Form.Group style={{marginTop:30}} className="mb-3" controlId="personPassword">
                             <Form.Label>Mot de Passe</Form.Label>
@@ -46,6 +47,7 @@ export default function Signin(props) {
                         </Form.Group>
 
                         <Button style={{marginTop:20}} variant="primary" type="submit">
+
                             OK
                         </Button>
                     </Form>

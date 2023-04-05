@@ -35,6 +35,7 @@ function MyNavBar(props) {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
+
                 <Navbar.Brand>
                     <Link to="/"><img src={"http://localhost:8000/img/logo2.png"} style={{width: 50}}/></Link>
 
@@ -51,6 +52,7 @@ function MyNavBar(props) {
                     <Button variant="btn btn-primary" onClick={() => navigate("/Salle")}>Salle</Button>
                     <Button variant="btn btn-primary" onClick={() => navigate("/films")}>Films</Button>
                 < /> : <></>
+
                 }
 
 
@@ -58,8 +60,10 @@ function MyNavBar(props) {
                     <Nav.Item>Hello {name}</Nav.Item>
                 }
                 {name === undefined ?< >
-                        <Button variant="outline-success" onClick={() => navigate("/signin")}>Connexion</Button>
-                        <Button variant="outline-success" onClick={() => navigate("/signup")}>Inscription</Button> < /> :
+
+                    <Button variant="outline-success" onClick={() => navigate("/signin")}>Connexion</Button>
+                    <Button variant="outline-success" onClick={() => navigate("/signup")}>Inscription</Button> < /> :
+
                     <Button variant="outline-danger" onClick={() => props.removeCookie("voyalacyet")}>déconnexion</Button>
                 }
 
