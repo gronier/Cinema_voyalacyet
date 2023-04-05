@@ -73,9 +73,6 @@ export default function Salle(props) {
         })();
     }, []);
 
-
-
-
     return (
         <div className="container">
             <div className="p-2 d-flex justify-content-between">
@@ -101,12 +98,8 @@ export default function Salle(props) {
                         <td>{i.nom_salle}</td>
                         <td>{i.nbPlace_salle}</td>
                         <td><button type="button" className="btn btn-danger" onClick={() => deleteSalle(i.id_salle)}>Suppression</button>  <a href={`/updateSalle/${i.id_salle}`}  type="button" className="btn btn-warning">Modification</a> </td>
-
-
                     </tr>
                 )}
-
-
                 </tbody>
             </table>
 
