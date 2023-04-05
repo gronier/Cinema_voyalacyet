@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import jwt_decode from "jwt-decode";
+
 
 export default function Reservation(props) {
 
     const [Reservation , setReservation] = useState([]);
     const [Seance , setSeance] = useState([]);
+    const [User , setUser] = useState();
+    const [Films , setFilm] = useState([]);
+
 
 
 
@@ -34,15 +38,28 @@ export default function Reservation(props) {
         }
     }
 
+    async function getFilm() {
+        try {
+
+            const response = await axios.request({
+                url: "http://localhost:8000/film" ,
+            })
+            setFilm(response.data);
+        } catch (error) {
+            console.log("error", error);
+        }
+    }
+
 
     let token;
-    let user;
+    var user;
     const navigate = useNavigate()
     useEffect(()=>{
         if (props.cookies && props.cookies.voyalacyet) {
 
             token = props.cookies.voyalacyet.token
             user = jwt_decode(token)
+            setUser(user);
 
         }
         if(token === undefined) {
@@ -52,18 +69,13 @@ export default function Reservation(props) {
         (async () => {
             await getReservation();
             await getSeance();
+            await getFilm();
+
         })();
     },[])
 
 
-    async function getFilm(id) {
-        console.log(id);
-        const data = (await axios.get("http://localhost:8000/film/"+id)).data;
 
-        console.log(data);
-
-
-    }
 
     async function deleteReservation(id) {
         try {
@@ -84,6 +96,65 @@ export default function Reservation(props) {
         } catch (error) {
             console.log("error", error);
         }
+    }
+
+    async function createReservation(id) {
+        try {
+            console.log(User.id);
+            let nb = null;
+
+            while(nb === null || isNaN(nb)) {
+                nb = window.prompt("Veuillez saisir un nombre de place ?");
+            }
+
+            var confirm =  window.confirm("Voulez-vous confirmer l'action ?");
+
+            if(confirm == true)
+            {
+                console.log(nb);
+
+                await axios.post("http://localhost:8000/reservation", {
+                    id_user: User.id,
+                    nb_place: nb,
+                    id_seance: id
+                }) ;
+                window.location.reload();
+
+
+            }
+
+
+
+        } catch (error) {
+            console.log("error", error);
+        }
+    }
+
+    async function getAffiche(id) {
+        try {
+
+             axios.get(
+                 "http://localhost:8000/film/"+id
+             ).then((response) => {
+                const data = response.data;
+
+
+                return data.affiche;
+             })
+
+
+
+
+
+
+
+        } catch (error) {
+            console.log("error", error);
+        }
+    }
+
+    function getTestId(id) {
+        return "toto";
     }
 
 
@@ -113,6 +184,7 @@ export default function Reservation(props) {
                     </thead>
                     <tbody>
                     {Reservation.map(i =>
+
                         <tr key={i.id_reservation}>
                             <td>{i.id_seance}</td>
 
@@ -146,20 +218,32 @@ export default function Reservation(props) {
                     </tr>
                     </thead>
                     <tbody>
-                    {Seance.map(i =>
-                        <tr key={i.id_seance}>
-                            <td>{i.id_film}</td>
-
-                            <td>{i.language_seance}</td>
-                            <td>{i.version_seance}</td>
-                            <td>{i.prix_seance} €</td>
-                            <td>
-                                <button type="button" className="btn btn-danger" >Réservé</button>
-
-                            </td>
 
 
-                        </tr>
+                        {Seance.map(i =>
+
+
+
+                            <tr key={i.id_seance}>
+
+                                <td><a href={`/film/${i.id_film}`}  type="button" className="btn btn-warning">Voir le film {i.id_film}</a></td>
+
+                                <td>{i.language_seance}</td>
+                                <td>{i.version_seance}</td>
+                                <td>{i.prix_seance} €</td>
+                                <td>
+                                    <button type="button" className="btn btn-success" onClick={() => createReservation(i.id_seance)} >Réservé</button>
+
+                                </td>
+
+
+                            </tr>
+
+
+
+
+
+
                     )}
 
 
