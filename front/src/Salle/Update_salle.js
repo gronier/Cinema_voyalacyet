@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useCookies} from "react-cookie";
-import {Route, Routes, useParams} from "react-router-dom";
+import {Route, Routes, useNavigate, useParams} from "react-router-dom";
 import Home from "../Home/Home";
 import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
 import Items from "../Items/Items";
 import {Button, Container, Form} from "react-bootstrap";
 import data from "bootstrap/js/src/dom/data";
+import jwt_decode from "jwt-decode";
 
 
 
@@ -24,6 +25,20 @@ export default function Update_salle(props) {
         console.log("get auteur", data);
         setUpdateSalle(data);
     }
+    let name;
+    let token;
+    let role;
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if (props.cookies && props.cookies.voyalacyet) {
+            name = props.cookies.voyalacyet.name;
+            token = props.cookies.voyalacyet.token
+            role = jwt_decode(token)
+        }
+        if(token === undefined || role.role !== 3) {
+            navigate('/')
+        }
+    },[])
 
     useEffect(() => {
         (async () => {

@@ -1,7 +1,11 @@
+
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import {useCookies} from "react-cookie";
+import {useNavigate} from "react-router-dom";
+
 
 
 export default function Reservation(props) {
@@ -51,8 +55,14 @@ export default function Reservation(props) {
     }
 
 
+
+
+
+
+
+
     let token;
-    var user;
+    let user;
     const navigate = useNavigate()
     useEffect(()=>{
         if (props.cookies && props.cookies.voyalacyet) {
@@ -65,6 +75,7 @@ export default function Reservation(props) {
         if(token === undefined) {
             navigate('/')
         }
+
 
         (async () => {
             await getReservation();

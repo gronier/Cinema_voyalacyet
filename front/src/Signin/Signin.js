@@ -18,8 +18,8 @@ export default function Signin(props) {
             if (response.token === undefined) {
                 alert("échec de connexion");
             } else {
-                alert(response.token);
                 props.setCookie("voyalacyet", {name: person.email, token: response.token}, "/");
+                navigate('/')
             }
             setPerson({name: "", password: ""});
         } catch (e) {
@@ -35,17 +35,17 @@ export default function Signin(props) {
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="personEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="text" placeholder="Email" value={person.email}
+                            <Form.Control id="email" type="text" placeholder="Email" value={person.email}
                                           onChange={e => handleTextChange(e, "email")}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="personPassword">
                             <Form.Label>mot de passe</Form.Label>
-                            <Form.Control type="password" placeholder="" value={person.password}
+                            <Form.Control id="psw" type="password" placeholder="" value={person.password}
                                           onChange={e => handleTextChange(e, "password")}/>
                         </Form.Group>
 
-                        <Button variant="primary" type="submit">
+                        <Button id="ok" variant="primary" type="submit">
                             OK
                         </Button>
                     </Form>
