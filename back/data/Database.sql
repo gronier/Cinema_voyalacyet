@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS Film;
 DROP TABLE IF EXISTS Salle;
 DROP TABLE IF EXISTS Seance;
 DROP TABLE IF EXISTS Reservation;
+
 CREATE TABLE Role
 (
     id_role integer primary key autoincrement,
@@ -37,6 +38,7 @@ CREATE TABLE Salle
     nbPlace_salle integer not null,
     unique (nom_salle)
     
+
 );
 CREATE TABLE Seance
 (
@@ -58,7 +60,9 @@ CREATE TABLE Reservation
     FOREIGN KEY (id_user) REFERENCES User(id_user),
     FOREIGN KEY (id_seance) REFERENCES Seance(id_seance)
 );
-INSERT INTO Role (name_role) VALUES ('Client'),('Etudiant'),('Employer');
+
+INSERT INTO Role (name_role) VALUES ('Client'),('Etudiant'),('Employe');
 INSERT INTO Film(nom_film, affiche, duree_film, description_film) VALUES ('Mario','dffffff',92,'Film animé mario');
 INSERT INTO Salle(nom_salle, nbPlace_salle) VALUES ('test',69);
 INSERT INTO Seance(language_seance, version_seance, date_seance, prix_seance, id_film) values ('VF','2D','2023-04-05',10,1)
+
