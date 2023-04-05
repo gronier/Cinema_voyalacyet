@@ -5,7 +5,6 @@ import {Route, Routes, useNavigate} from "react-router-dom";
 import Home from "../Home/Home";
 import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
-import Items from "../Items/Items";
 import Creation_salle from "./Creation_salle";
 import jwt_decode from "jwt-decode";
 

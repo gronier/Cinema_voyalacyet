@@ -5,7 +5,6 @@ import {Route, Routes, useNavigate} from "react-router-dom";
 import Home from "../Home/Home";
 import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
-import Items from "../Items/Items";
 import {Button, Container, Form} from "react-bootstrap";
 import data from "bootstrap/js/src/dom/data";
 import { redirect } from "react-router-dom";
