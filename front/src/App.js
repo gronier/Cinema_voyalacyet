@@ -17,7 +17,7 @@ import Creation_salle from "./Salle/Creation_salle";
 import Update_salle from "./Salle/Update_salle";
 import jwt_decode from "jwt-decode";
 import Create_seance from "./Seance/Create_seance";
-import Film from "./Reservation/film";
+// import Film from "./Reservation/film";
 
 
 
