@@ -7,7 +7,7 @@ import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
 import Items from "../Items/Items";
 import {Button, Container, Form} from "react-bootstrap";
-import data from "bootstrap/js/src/dom/data";
+
 import { redirect } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
