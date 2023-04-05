@@ -64,7 +64,7 @@ export default function App() {
             <MyNavBar cookies={cookies} removeCookie={removeCookie}/>
             <Routes>
                 <Route exact={true} path="/" element={<Home/>}/>
-                <Route exact={true} path="/reservation" element={<Reservation/>}/>
+                <Route exact={true} path="/reservation" element={<Reservation cookies={cookies}/>}/>
                 <Route exact={true} path="/seance" element={<Seance/>}/>
                 <Route exact={true} path="/signin" element={<Signin setCookie={setCookie}/>}/>
                 <Route exact={true} path="/signup" element={<Signup/>}/>
