@@ -18,8 +18,8 @@ export default function Signin(props) {
             if (response.token === undefined) {
                 alert("échec de connexion");
             } else {
-                alert(response.token);
                 props.setCookie("voyalacyet", {name: person.email, token: response.token}, "/");
+                navigate('/')
             }
             setPerson({name: "", password: ""});
         } catch (e) {
