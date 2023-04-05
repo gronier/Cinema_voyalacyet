@@ -16,6 +16,7 @@ import UpdateFormFilm from "./Film/UpdateFormFilm";
 import Creation_salle from "./Salle/Creation_salle";
 import Update_salle from "./Salle/Update_salle";
 import jwt_decode from "jwt-decode";
+import Film from "./Reservation/film";
 
 
 
@@ -78,6 +79,7 @@ export default function App() {
                 <Route exact={true} path="/createFilm" element={<FormFilm/>}/>
                 <Route exact={true} path="/updateFilm/:id" element={<UpdateFormFilm/>}/>
                 <Route exact={true} path="/Salle" element={<Salle cookies={cookies}/>}/>
+                <Route exact={true} path="/film/:id" element={<Film/>}/>
                 <Route exact={true} path="/createSalle" element={<Creation_salle cookies={cookies}/>}/>
                 <Route exact={true} path="/updateSalle/:id" element={<Update_salle cookies={cookies}/>}/>
 
