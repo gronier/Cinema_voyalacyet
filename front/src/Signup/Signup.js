@@ -54,7 +54,7 @@ export default function Signup(){
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="personRole">
                             <Form.Label>Role</Form.Label>
-                            <Form.Select defaultValue={"1"} onChange={e => handleTextChange(e, "role")}>
+                            <Form.Select  onChange={e => handleTextChange(e, "role")}>
                                 <option value={"1"}>Client</option>
                                 <option value={"2"}>Etudiant</option>
                             </Form.Select>
