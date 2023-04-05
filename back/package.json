@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "resetDB": "sqlite3 -init data/Database.sql data/items.db .quit"
+    "resetDB": "sqlite3 -init data/Database.sql data/Database.db .quit",
+    "mocha" : ".\\node_modules\\.bin\\mocha"
+
   },
   "keywords": [],
   "author": "",
@@ -16,8 +18,14 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.22",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "sqlite3": "^5.1.4"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.2.0"
   }
 }

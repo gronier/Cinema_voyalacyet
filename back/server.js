@@ -2,8 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 
-const routes = require("./routes");
+
 const film = require("./routes/route_film")
+const salle = require("./routes/route_salle");
+const routes = require("./routes/routes");
+const route_login = require("./routes/route_login");
+
+
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -15,6 +20,8 @@ app
     .use(express.urlencoded({extended: true}))
     .use(routes)
     .use(film)
+    .use(salle)
+    .use(route_login)
     .use((req, res) => {
         res.status(404);
         res.json({
