@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const salle = require("./routes/route_salle");
 const routes = require("./routes/routes");
 const route_login = require("./routes/route_login");
-
+const route_reservation = require("./routes/route_reservation");
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -19,6 +19,7 @@ app
     .use(routes)
     .use(salle)
     .use(route_login)
+    .use(route_reservation)
     .use((req, res) => {
         res.status(404);
         res.json({

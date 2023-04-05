@@ -38,7 +38,8 @@ routes
         )
     })
     .post("/reservation",(req , res) => {
-        db.run("insert into Reservation (id_user , nb_place , 'id_seance') values (?,?,?)",
+        console.log(req.body);
+        db.run("insert into Reservation (id_user , nb_place , id_seance) values (?,?,?)",
             req.body.id_user, req.body.nb_place, req.body.id_seance,
             (err) => {
                 if (err) {
