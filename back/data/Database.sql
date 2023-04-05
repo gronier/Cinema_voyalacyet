@@ -37,12 +37,12 @@ CREATE TABLE Salle
     nom_salle varchar not null,
     nbPlace_salle integer not null,
     unique (nom_salle)
-    
 
 );
 CREATE TABLE Seance
 (
     id_seance integer primary key autoincrement,
+
 
     language_seance varchar not null,
     version_seance varchar not null,
@@ -50,6 +50,7 @@ CREATE TABLE Seance
     date_fin_seance datetime not null,
     prix_seance numeric not null ,
     id_film integer not null,
+
 
     FOREIGN KEY (id_film) REFERENCES Film(id_film)
 

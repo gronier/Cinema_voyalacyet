@@ -9,6 +9,7 @@ const e = require("express");
 
 routes
     .post('/seance', (req, res) => {
+
         db.run("insert into Seance(language_seance, version_seance, date_debut_seance, date_fin_seance, prix_seance, id_film) values ($language_seance,$version_seance,$date_debut_seance, $date_fin_seance,$prix_seance, $film)",
             {
                 $language_seance: req.body.language_seance,
@@ -19,6 +20,7 @@ routes
                 $film: req.body.id_film
             },
             (err) => {
+
                 if(err){
                     return res.json(err).status(401);
                 }
@@ -38,7 +40,9 @@ routes
     })
     .delete('/seance/:id',(req,res) => {
         console.log(req.params.id)
+
         db.run("delete from Seance where id_seance=?", [req.params.id],
+
             (err,rows) => {
                 if(err){
                     return res.json(err).status(401);
@@ -48,4 +52,6 @@ routes
     })
 
 
+
 module.exports = routes;
+
