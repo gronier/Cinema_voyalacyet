@@ -38,6 +38,15 @@ routes
                 res.status(201).json(rows);
             })
     })
+    .get('/seance/:id' , (req , res) => {
+        db.get(
+            "select * from Seance where id_seance =?" , req.params.id ,
+            (err, rows) => {
+                res.json(rows)
+
+            }
+        )
+    })
     .delete('/seance/:id',(req,res) => {
         console.log(req.params.id)
 

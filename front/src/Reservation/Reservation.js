@@ -241,7 +241,7 @@ export default function Reservation(props) {
                                 <td>{i.version_seance}</td>
                                 <td>{i.prix_seance} €</td>
                                 <td>
-                                    <button type="button" className="btn btn-success" onClick={() => createReservation(i.id_seance)} >Réservé</button>
+                                    <a href={`/reservation/create/${i.id_seance}/${i.id_film}`} type="button" className="btn btn-success"  >Réservé</a>
 
                                 </td>
 
