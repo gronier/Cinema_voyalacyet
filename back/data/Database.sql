@@ -7,7 +7,8 @@ DROP TABLE IF EXISTS Reservation;
 CREATE TABLE Role
 (
     id_role integer primary key autoincrement,
-    name_role varchar not null
+    name_role varchar not null,
+    unique (name_role)
 );
 CREATE TABLE User
 (
@@ -17,6 +18,7 @@ CREATE TABLE User
     email_user varchar not null,
     password_user varchar not null ,
     id_role integer ,
+    unique (email_user),
     FOREIGN KEY (id_role) REFERENCES Role(id_role)
 );
 CREATE TABLE Film
@@ -25,20 +27,23 @@ CREATE TABLE Film
     nom_film varchar not null,
     affiche varchar not null,
     duree_film varchar not null,
-    description_film varchar not null
+    description_film varchar not null,
+    unique (nom_film)
 );
 CREATE TABLE Salle
 (
     id_salle integer primary key autoincrement,
     nom_salle varchar not null,
-    nbPlace_salle integer not null
+    nbPlace_salle integer not null,
+    unique (nom_salle)
+    
 );
 CREATE TABLE Seance
 (
     id_seance integer primary key autoincrement,
     language_seance varchar not null,
     version_seance varchar not null,
-    date_seance varchar not null,
+    date_seance date not null,
     prix_seance numeric not null ,
     id_film integer not null,
     FOREIGN KEY (id_film) REFERENCES Film(id_film)
