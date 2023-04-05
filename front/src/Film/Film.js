@@ -76,4 +76,5 @@ export default function Film(props){
             </div>
         </>
     )
+
 }

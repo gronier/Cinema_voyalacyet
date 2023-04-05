@@ -42,12 +42,16 @@ CREATE TABLE Salle
 CREATE TABLE Seance
 (
     id_seance integer primary key autoincrement,
-    language_seance varchar,
-    version_seance varchar,
-    date_debut_seance datetime,
-    date_fin_seance datetime,
-    prix_seance numeric ,
-    id_film integer,
+
+
+    language_seance varchar not null,
+    version_seance varchar not null,
+    date_debut_seance datetime not null,
+    date_fin_seance datetime not null,
+    prix_seance numeric not null ,
+    id_film integer not null,
+
+
     FOREIGN KEY (id_film) REFERENCES Film(id_film)
 
 );
@@ -65,3 +69,4 @@ INSERT INTO Role (name_role) VALUES ('Client'),('Etudiant'),('Employe');
 INSERT INTO Film(nom_film, affiche, duree_film, description_film) VALUES ('Mario','dffffff',92,'Film animé mario');
 INSERT INTO Salle(nom_salle, nbPlace_salle) VALUES ('test',69);
 INSERT INTO Seance(language_seance, version_seance, date_debut_seance, date_fin_seance, prix_seance, id_film) values ('VF','2D','2023-04-05 12:00','2023-04-05 14:00',10,1)
+

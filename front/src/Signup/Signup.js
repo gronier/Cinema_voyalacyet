@@ -31,34 +31,38 @@ export default function Signup(){
     }
 
     return (
-        <Container>
+        <Container style={{marginBottom:30,marginTop:20}}>
             <div className="row justify-content-md-center">
                 <div className="col col-lg-3">
                     <h1 className="person-title">Créer un compte</h1>
-                    <Form onSubmit={handleSubmit}>
+                    <Form  style={{marginTop:20}}  onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="personNom">
                             <Form.Label>Nom</Form.Label>
                             <Form.Control id="name" type="text" placeholder="Nom" value={person.nom}
                                           onChange={e => handleTextChange(e, "nom")}/>
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="personPrenom">
+                        <Form.Group  style={{marginTop:20}} className="mb-3" controlId="personPrenom">
                             <Form.Label>Prenom</Form.Label>
                             <Form.Control id="firstname" type="text" placeholder="Prenom" value={person.prenom}
                                           onChange={e => handleTextChange(e, "prenom")}/>
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="personEmail">
+                        <Form.Group  style={{marginTop:20}} className="mb-3" controlId="personEmail">
                             <Form.Label>Email</Form.Label>
                             <Form.Control id="email" type="text" placeholder="Email" value={person.email}
                                           onChange={e => handleTextChange(e, "email")}/>
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="personPassword">
-                            <Form.Label>mot de passe</Form.Label>
-                            <Form.Control id="psw" type="password" placeholder="" value={person.password}
+
+                        <Form.Group  style={{marginTop:20}} className="mb-3" controlId="personPassword">
+                            <Form.Label>Mot de Passe</Form.Label>
+                            <Form.Control type="password" placeholder="" value={person.password}
+
                                           onChange={e => handleTextChange(e, "password")}/>
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="personRole">
+                        <Form.Group  style={{marginTop:20}} className="mb-3" controlId="personRole">
                             <Form.Label>Role</Form.Label>
-                            <Form.Select  onChange={e => handleTextChange(e, "role")} defaultValue={'1'}>
+
+                            <Form.Select  onChange={e => handleTextChange(e, "role")}>
+
                                 <option> - Selectionne ton role - </option>
                                 <option value={"1"}>Client</option>
                                 <option value={"2"}>Etudiant</option>
@@ -66,7 +70,9 @@ export default function Signup(){
 
                             </Form.Select>
                         </Form.Group>
-                        <Button id="ok" variant="primary" type="submit">
+
+                        <Button  style={{marginTop:20}} variant="primary" type="submit">
+
                             OK
                         </Button>
                     </Form>
