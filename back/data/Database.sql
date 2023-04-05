@@ -4,10 +4,12 @@ DROP TABLE IF EXISTS Film;
 DROP TABLE IF EXISTS Salle;
 DROP TABLE IF EXISTS Seance;
 DROP TABLE IF EXISTS Reservation;
+
 CREATE TABLE Role
 (
     id_role integer primary key autoincrement,
-    name_role varchar not null
+    name_role varchar not null,
+    unique (name_role)
 );
 CREATE TABLE User
 (
@@ -17,6 +19,7 @@ CREATE TABLE User
     email_user varchar not null,
     password_user varchar not null ,
     id_role integer ,
+    unique (email_user),
     FOREIGN KEY (id_role) REFERENCES Role(id_role)
 );
 CREATE TABLE Film
@@ -25,22 +28,25 @@ CREATE TABLE Film
     nom_film varchar not null,
     affiche varchar not null,
     duree_film varchar not null,
-    description_film varchar not null
+    description_film varchar not null,
+    unique (nom_film)
 );
 CREATE TABLE Salle
 (
     id_salle integer primary key autoincrement,
     nom_salle varchar not null,
     nbPlace_salle integer not null
+
 );
 CREATE TABLE Seance
 (
     id_seance integer primary key autoincrement,
-    language_seance varchar not null,
-    version_seance varchar not null,
-    date_seance varchar not null,
-    prix_seance numeric not null ,
-    id_film integer not null,
+    language_seance varchar,
+    version_seance varchar,
+    date_debut_seance datetime,
+    date_fin_seance datetime,
+    prix_seance numeric ,
+    id_film integer,
     FOREIGN KEY (id_film) REFERENCES Film(id_film)
 
 );
@@ -53,9 +59,8 @@ CREATE TABLE Reservation
     FOREIGN KEY (id_user) REFERENCES User(id_user),
     FOREIGN KEY (id_seance) REFERENCES Seance(id_seance)
 );
-INSERT INTO Role (name_role) VALUES ('Client'),('Etudiant'),('Employer');
+
+INSERT INTO Role (name_role) VALUES ('Client'),('Etudiant'),('Employe');
 INSERT INTO Film(nom_film, affiche, duree_film, description_film) VALUES ('Mario','dffffff',92,'Film animé mario');
 INSERT INTO Salle(nom_salle, nbPlace_salle) VALUES ('test',69);
-INSERT INTO Seance(language_seance, version_seance, date_seance, prix_seance, id_film) values ('VF','2D','2023-04-05',10,1)
-
--- INSERT INTO person(per_name,per_password) VALUES ("toto","$2b$10$D9H96iHFqk7q4YsdBxgP.uBeqFdfE0N/h3nR64oIuciuIfN8KaMRO");
+INSERT INTO Seance(language_seance, version_seance, date_debut_seance, date_fin_seance, prix_seance, id_film) values ('VF','2D','2023-04-05 12:00','2023-04-05 14:00',10,1)

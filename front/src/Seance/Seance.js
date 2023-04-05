@@ -6,29 +6,13 @@ import frLocale from '@fullcalendar/core/locales/fr'
 import axios from "axios";
 import FullCalendar from "@fullcalendar/react";
 import {Container} from "react-bootstrap";
+import Create_seance from "./Create_seance";
 
 export default function Seance(props){
     let eventGuid = 0
     let todayStr = new Date().toISOString().replace(/T.*$/, '')
 
-    const [Seance, setSeance] = useState([
-        {
-            id: createEventId(),
-            title: 'All-day event',
-            start: todayStr
-        },
-        {
-            id: createEventId(),
-            title: 'Timed event',
-            duree: '300min',
-            start: todayStr + 'T25:00:00'
-        },
-        {
-            id: createEventId(),
-            title: 'Timed event 300min',
-            start: todayStr + 'T12:00:00'
-        }
-    ]);
+    const [seance, setSeance] = useState([]);
 
     const handleDateSelect = (selectInfo) => {
         let title = prompt('Please enter a new title for your event')
@@ -47,6 +31,37 @@ export default function Seance(props){
         }
     }
 
+    useEffect(() => {
+        axios
+            .get("http://localhost:8000/seance")
+            .then((response) => {
+                setSeance(response.data);
+            })
+            .catch ((error) => {
+                console.log("error", error);
+            });
+    }, []);
+
+    const seanceEvent = seance.map(seance => ({
+        title: 'Séance cinéma',
+        start: seance.date_debut_seance,
+        end: seance.date_fin_seance,
+        id: seance.id_seance
+    }))
+
+    const deleteEvent = (id) => {
+        axios
+            .delete(`http://localhost:8000/seance/${id}`)
+            .then((response) => {
+                console.log(response.data);
+                const updatedEvents = seanceEvent.filter((event) => event.id !== id);
+                setSeance(updatedEvents);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     const handleEventDelete = (clickInfo) => {
         const eventId = clickInfo.event.id;
         const eventStart = clickInfo.event.start;
@@ -58,51 +73,6 @@ export default function Seance(props){
             window.location.reload();
         }
     }
-
-
-    async function getSeance() {
-        try {
-            const response = await axios.request({
-                url: "http://localhost:8000/Seance",
-            })
-            setSeance(response.data);
-        } catch (error) {
-            console.log("error", error);
-        }
-    }
-
-    async function handleSubmitSalle(e) {
-        e.preventDefault();
-        try {
-
-            const response = (await axios.post("http://localhost:8000/Seance" , Seance  ) ).data;
-
-
-            setSeance({date_seance: ""});
-            document.location.replace("http://localhost:3000/Seance");
-        } catch (e) {
-            console.error("ERR", e);
-        }
-    }
-
-    const deleteEvent = (id) => {
-        axios
-            .delete(`http://localhost:8000/Seance/${id}`)
-            .then((response) => {
-                console.log(response.data);
-                const updatedEvents = Seance.filter((event) => event.id !== id);
-                setSeance(updatedEvents);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    useEffect(() => {
-        (async () => {
-            await getSeance();
-        })();
-    }, []);
 
     function createEventId() {
         return String(eventGuid++)
@@ -120,10 +90,11 @@ export default function Seance(props){
     return (
         <div className='demo-app'>
             <div className='demo-app-main'>
+                <a href="/createSeance" type="button" className="btn btn-success">Crée une séance</a>
                 <Container className="mt-5">
                     <FullCalendar plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin ]}
                                       initialView="timeGridWeek"
-                                      events={Seance}
+                                      events={seanceEvent}
                                       editable={true}
                                       selectable={true}
                                       selectMirror={true}
@@ -133,7 +104,6 @@ export default function Seance(props){
                                       select={handleDateSelect}
                                       eventContent={renderEventContent}
                                       eventClick={handleEventDelete}
-                                      eventAdd={handleSubmitSalle}
                     />
                 </Container>
             </div>

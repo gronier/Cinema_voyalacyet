@@ -1,27 +1,70 @@
 import React from "react";
+import {Carousel,Card} from "react-bootstrap";
+import {MDBCol, MDBRow} from "mdb-react-ui-kit";
 
 export default function Home() {
+    const width = 1300
     return (
         <>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse odio urna, fringilla non massa eget, egestas imperdiet libero. Morbi pulvinar turpis a porta tincidunt. Fusce dictum arcu in lacinia porttitor. Maecenas sed diam non quam pharetra interdum non et dui. Vestibulum vel laoreet mi, et rutrum nunc. Fusce laoreet neque ac feugiat volutpat. Nam consequat ut dui tincidunt dapibus.
+            <br/>
+            <h2 style={{textAlign:"center",marginTop:25}}> Bienvenue au Cinéma-Voyalacyet
+            </h2>
+            <MDBRow className='d-flex justify-content-center'>
+                <MDBCol md='6'>
+                    <p className="text-justify" style={{textAlign: "justify", marginTop: 50 ,fontSize:17}}>
+                        Notre cinéma est l'endroit idéal pour les amateurs de films de tous genres. Nous offrons une
+                        expérience de visionnement unique avec des équipements de pointe et une ambiance chaleureuse.
 
-            Nulla eget condimentum nulla, in vulputate turpis. Vestibulum id scelerisque nisl. Aliquam varius augue urna, nec gravida nibh pulvinar eu. Donec egestas justo eget nunc accumsan, vitae iaculis nisl interdum. Proin urna tortor, ultrices sed ipsum sed, interdum aliquet ipsum. Maecenas sagittis ultricies dictum. Aliquam erat volutpat. Morbi nec dui ac ipsum hendrerit finibus nec at lacus. Phasellus in diam sit amet purus faucibus consectetur nec ac quam. Nullam imperdiet tellus et mauris posuere tempor.
+                        <br/>Nous avons une grande sélection de films, des blockbusters aux films indépendants, en passant
+                        par les films d'animation pour enfants. Nous nous efforçons de présenter une programmation
+                        variée pour plaire à tous les goûts et à tous les âges.
 
-            Donec arcu urna, vehicula varius urna nec, fringilla elementum odio. Nulla tristique ex quis lacus ornare, eu commodo quam tincidunt. Ut in velit orci. Vestibulum faucibus augue non sagittis efficitur. Sed augue magna, lobortis eu libero fringilla, lobortis vehicula diam. Duis vulputate arcu id egestas feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque dignissim vel nunc nec eleifend. Etiam laoreet pretium libero id vestibulum. Curabitur dapibus laoreet sapien eget euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                        Nos salles de projection sont équipées des dernières technologies audio et vidéo, offrant une
+                        qualité d'image et de son exceptionnelle. Nous avons également des sièges confortables pour
+                        garantir une expérience de visionnement agréable.
 
-            Nulla hendrerit mauris a efficitur semper. Sed vitae gravida justo, a pharetra odio. Cras at neque orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin aliquet iaculis eros vel imperdiet. Sed interdum finibus ligula vel luctus. Curabitur gravida scelerisque dolor, eget malesuada nibh aliquam sed. Etiam at vestibulum neque. Suspendisse molestie fringilla ex, eget gravida mauris. Sed efficitur aliquet lectus sed convallis. Pellentesque auctor egestas augue et bibendum. Praesent at sapien nec mauris feugiat pulvinar eu in lacus. Quisque luctus pellentesque metus, ac semper diam maximus sit amet. Donec sed vehicula nibh, faucibus dictum magna.
+                        <br/>De plus, notre personnel est amical et serviable, prêt à répondre à toutes vos questions
+                        et à vous aider à trouver les meilleurs sièges dans la salle.
 
-            Maecenas purus nulla, ullamcorper vitae enim sit amet, laoreet sollicitudin turpis. Integer id nisl non purus imperdiet accumsan. Aliquam metus elit, cursus non condimentum eget, vulputate non sem. Praesent sed dui nec lacus bibendum efficitur in nec justo. Nunc ullamcorper est eget nulla mollis imperdiet. Fusce massa sapien, dictum vitae maximus eget, varius sed tellus. Vivamus vel ante efficitur tellus convallis euismod. Etiam varius dui eget gravida faucibus.
+                        <br/>Nous proposons également des offres spéciales, comme des soirées à thème, des événements
+                        spéciaux et des tarifs réduits pour les étudiants et les enfants.
 
-            Phasellus condimentum varius feugiat. Curabitur egestas arcu est, ut tincidunt enim accumsan id. Pellentesque erat erat, hendrerit id est nec, iaculis aliquet diam. Suspendisse convallis massa eu neque rutrum, in vulputate massa luctus. Praesent vestibulum, leo ac facilisis vehicula, sapien justo malesuada erat, sit amet pulvinar felis nunc at mi. Morbi tincidunt cursus porttitor. Integer id augue nisi. Duis sed convallis tellus. Cras felis justo, egestas sed condimentum ac, ornare mattis libero. Ut dapibus ornare leo ut cursus. Nam nisl lacus, ullamcorper et enim eget, placerat tempus odio. Fusce id ultricies metus. Nulla ac metus lacus. Aenean ullamcorper ante ante, a suscipit tortor semper a.
+                        <br/>Venez découvrir notre cinéma-Voyalacyet pour une expérience cinématographique inoubliable !</p>
+                </MDBCol>
+            </MDBRow>
 
-            Nam imperdiet nulla non risus luctus, a condimentum enim condimentum. Fusce interdum felis eu sem ornare blandit. Nunc maximus sodales ligula, eu viverra velit. Integer nec ullamcorper lectus, eu egestas quam. Aliquam sed augue id dui maximus aliquet et id justo. Vivamus efficitur est at fringilla pulvinar. Suspendisse vel ante id elit fermentum fermentum. Cras posuere ex scelerisque dui tristique viverra. Nunc sed quam risus. Praesent dui nisl, aliquet vitae nunc id, tristique bibendum nisi. Maecenas massa libero, bibendum ac pulvinar in, tincidunt ut enim. Fusce at odio libero. Quisque elementum, est viverra posuere efficitur, velit tortor eleifend libero, id convallis mi orci ut sem. Sed aliquet erat vitae posuere semper.
+            <div>
+                <section className="slider container mb-3">
+                    <Carousel>
+                        <Carousel.Item className='slide'>
+                            <img
+                                className="d-block w-10"
+                                src= {'http://localhost:8000/img/ciné1.jpeg'}
+                                alt="First slide"
+                                width={width}
 
-            Duis sit amet lacus ullamcorper, dictum eros sed, elementum eros. Curabitur facilisis, enim in laoreet accumsan, magna lectus dignissim sapien, gravida ornare nibh metus eget risus. Mauris id fermentum turpis. Donec malesuada tellus id feugiat ultrices. Etiam lacinia lorem vestibulum, ultricies libero a, feugiat eros. Nunc mattis tempor tortor id aliquet. Nulla in nunc in ante maximus aliquet eu sit amet tortor.
+                            />
+                        </Carousel.Item>
+                        <Carousel.Item className='slide'>
+                            <img
+                                className="d-block w-10"
+                                src={'http://localhost:8000/img/ciné2.jpeg'}
+                                alt="Second slide"
+                                width={width}
 
-            Sed neque justo, volutpat in orci id, facilisis tempus ligula. Pellentesque at interdum arcu, quis consectetur mauris. Donec tristique turpis massa. Donec massa risus, fermentum vitae massa at, tristique fermentum nisl. Aenean tempor iaculis porttitor. Sed a dignissim enim. Vestibulum suscipit faucibus leo, facilisis laoreet diam placerat a. Nulla non euismod urna, vitae finibus ex.
-
-            Etiam mollis risus convallis leo mattis, posuere imperdiet nisi blandit. In vulputate ligula ac neque malesuada, at laoreet tellus vestibulum. Etiam leo lacus, semper ac nisl in, luctus rutrum neque. Nullam varius metus quis lectus posuere feugiat. Cras ac ultrices diam. Mauris sed orci mi. Aenean eu egestas turpis, ac condimentum enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget aliquam tellus.
+                            />
+                        </Carousel.Item>
+                        <Carousel.Item className='slide'>
+                            <img
+                                className="d-block w-10"
+                                src={'http://localhost:8000/img/ciné3.jpeg'}
+                                alt="Third slide"
+                                width={width}
+                            />
+                        </Carousel.Item>
+                    </Carousel>
+                </section>
+            </div>
         </>
     );
 }
