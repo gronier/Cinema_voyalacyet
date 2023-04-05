@@ -28,24 +28,24 @@ export default function Signin(props) {
     }
 
     return (
-        <Container style={{marginBottom:160,marginTop:20}}>
+        <Container>
             <div className="row justify-content-md-center">
                 <div className="col col-lg-3">
                     <h1 className="person-title">Se connecter</h1>
-                    <Form style={{marginTop:30}} onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="personEmail">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="text" placeholder="Email" value={person.email}
                                           onChange={e => handleTextChange(e, "email")}/>
                         </Form.Group>
 
-                        <Form.Group style={{marginTop:30}} className="mb-3" controlId="personPassword">
-                            <Form.Label>Mot de Passe</Form.Label>
+                        <Form.Group className="mb-3" controlId="personPassword">
+                            <Form.Label>mot de passe</Form.Label>
                             <Form.Control type="password" placeholder="" value={person.password}
                                           onChange={e => handleTextChange(e, "password")}/>
                         </Form.Group>
 
-                        <Button style={{marginTop:20}} variant="primary" type="submit">
+                        <Button variant="primary" type="submit">
                             OK
                         </Button>
                     </Form>

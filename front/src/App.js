@@ -34,21 +34,16 @@ function MyNavBar(props) {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand>
-                    <Link to="/"><img src={"http://localhost:8000/img/logo2.png"} style={{width: 50}}/></Link>
 
-                </Navbar.Brand>
                 {token === undefined ?< >
-                    <Button variant="btn btn-primary" onClick={() => navigate("/")}>Accueil</Button>
+                    <Navbar.Brand><Link to="/">Home</Link></Navbar.Brand>
 
-                < />: <>
-                    <Button variant="btn btn-primary" onClick={() => navigate("/")}>Accueil</Button>
-                    <Button variant="btn btn-primary" onClick={() => navigate("/reservation")}>Reservation</Button>
-                < />}
+                < />: <> <Navbar.Brand><Link to="/">Home</Link></Navbar.Brand>
+                       <Nav.Item><Link to="/reservation">Reservation</Link></Nav.Item> </>}
                 {token !== undefined && role.role ===3 ? < >
-                    <Button variant="btn btn-primary" onClick={() => navigate("/seance")}>Seance</Button>
-                    <Button variant="btn btn-primary" onClick={() => navigate("/Salle")}>Salle</Button>
-                    <Button variant="btn btn-primary" onClick={() => navigate("/films")}>Films</Button>
+                        <Nav.Item><Link to="/seance">Seance</Link></Nav.Item>
+                        <Nav.Item><Link to="/Salle">Salle</Link></Nav.Item>
+                        <Nav.Item><Link to="/films">Films</Link></Nav.Item>
                         < /> : <></>
                 }
 

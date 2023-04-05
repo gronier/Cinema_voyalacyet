@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useCookies} from "react-cookie";
-import {Route, Routes, useNavigate} from "react-router-dom";
+import {Route, Router, Routes, useNavigate} from "react-router-dom";
 import Home from "../Home/Home";
 import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
+import Items from "../Items/Items";
 import Creation_salle from "./Creation_salle";
 import jwt_decode from "jwt-decode";
+
+
 
 
 
@@ -70,11 +73,7 @@ export default function Salle(props) {
         })();
     }, []);
 
-
-
-
     return (
-
         <div className="container">
             <div className="p-2 d-flex justify-content-between">
                 <div>Gestion des salles</div>
@@ -97,26 +96,16 @@ export default function Salle(props) {
                 {Salles.map(i =>
                     <tr key={i.id_salle}>
                         <td>{i.nom_salle}</td>
-
                         <td>{i.nbPlace_salle}</td>
                         <td><button type="button" className="btn btn-danger" onClick={() => deleteSalle(i.id_salle)}>Suppression</button>  <a href={`/updateSalle/${i.id_salle}`}  type="button" className="btn btn-warning">Modification</a> </td>
-                        
-
                     </tr>
                 )}
-
-
                 </tbody>
             </table>
 
         </div>
-
-
-
-
-
-
     );
 }
+
 
 

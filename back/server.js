@@ -9,6 +9,7 @@ const routes = require("./routes/routes");
 const route_login = require("./routes/route_login");
 
 
+
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -17,7 +18,6 @@ app
     .use(cors())
     .use(express.json())
     .use(express.urlencoded({extended: true}))
-    .use("/img", express.static("img")) // la route "img" rend des fichiers stockés dans "back/img"
     .use(routes)
     .use(film)
     .use(salle)
