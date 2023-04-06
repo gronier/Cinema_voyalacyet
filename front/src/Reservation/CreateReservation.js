@@ -7,9 +7,9 @@ import {Button, Container, Form} from "react-bootstrap";
 export default function CreateReservation(props) {
     let params = useParams();
 
-    const [Seance , setSeance] = useState();
+    const [Seance , setSeance] = useState([]);
     const [User , setUser] = useState();
-    const [Film , setFilm] = useState();
+    const [Film , setFilm] = useState([]);
     const [Reservation , setReservation] = useState({nb_place:''});
 
     function handleTextChangeSalle(e, label) {
@@ -59,7 +59,7 @@ export default function CreateReservation(props) {
             user = jwt_decode(token)
             setUser(user)
         }
-        if(token === undefined || user.role !== 3) {
+        if(token === undefined ) {
             navigate('/')
         }
     },[])
@@ -67,22 +67,45 @@ export default function CreateReservation(props) {
 
     useEffect(() => {
         (async () => {
-            await getSeance();
+
             await getFilm();
+            await getSeance();
+
 
         })();
     }, []);
 
 
-    console.log(Film);
+    console.log(Seance , Film);
     return (
         <Container>
             <div className="row justify-content-md-center">
                 <div className="col col-lg-7">
-                    <h3 className="person-title">Réserver une séance pour le film  </h3>
+                    <h3 className="person-title">Réserver une séance pour le film {Film.nom_film}   </h3>
+
+                    Détails de la séance :
+                    <div className="row">
+                        <div className="col-6">
+                            <ul>
+                                <li>Language : {Seance.language_seance}</li>
+                                <li>Version : {Seance.version_seance}</li>
+                                <li>Date début : {Seance.date_debut_seance}</li>
+                                <li>Durée : {Film.duree_film} minutes</li>
+                                <li> Description : {Film.description_film}</li>
+                            </ul>
+
+                        </div>
+                        <div className="col-6">
+                            <img width="100px" height="150px" alt="img_film" src={Film.affiche} />
+
+                        </div>
+
+                    </div>
+
+
                     <Form onSubmit={handleSubmitReservation}>
                         <Form.Group className="mb-3" controlId="personNom">
-                            <Form.Label>Nombre de places</Form.Label>
+                            <Form.Label>Nombre de places prévues</Form.Label>
                             <Form.Control type="number" placeholder="Nombre de place" value={Reservation.nb_place}
                                           onChange={e => handleTextChangeSalle(e, "nb_place")}/>
                         </Form.Group>
