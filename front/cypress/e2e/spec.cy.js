@@ -1,21 +1,8 @@
 describe('My First Test',  ()  => {
-  it('Displays', () => {
-    cy.visit('http://localhost:3000/Salle');
-    cy.contains('Gestion des salles');
-  });
-  it('Links', () => {
-    cy.visit('http://localhost:3000');
-    cy.contains('Reservation').click();
-    cy.url().should('include', '/reservation');
-    cy.contains('Seance').click();
-    cy.url().should('include', '/seance');
-    cy.contains('Salle').click();
-    cy.url().should('include', '/Salle');
 
-  });
   it('user test', () => {
     cy.visit('http://localhost:3000');
-    cy.contains('Sign Up').click();
+    cy.contains('Inscription').click();
     cy.url().should('include', '/signup');
 
     const nom = 'test';
@@ -30,7 +17,7 @@ describe('My First Test',  ()  => {
 
     cy.get("#ok").click()
 
-    cy.contains('Sign In').click();
+    cy.contains('Connexion').click();
     cy.url().should('include', '/signin');
 
 
@@ -40,6 +27,18 @@ describe('My First Test',  ()  => {
     // cy.get("#ok").click()
 
 
+
+  });
+  it('Displays', () => {
+    cy.visit('http://localhost:3000/Salle');
+    cy.contains('Gestion des salles');
+  });
+  it('Links', () => {
+    cy.visit('http://localhost:3000');
+    cy.contains('Connexion').click();
+    cy.url().should('include', '/signin');
+    cy.contains('Inscription').click();
+    cy.url().should('include', '/signup');
 
   });
 

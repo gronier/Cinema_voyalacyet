@@ -42,11 +42,11 @@ export default function Signin(props) {
 
                         <Form.Group style={{marginTop:30}} className="mb-3" controlId="personPassword">
                             <Form.Label>Mot de Passe</Form.Label>
-                            <Form.Control type="password" placeholder="" value={person.password}
+                            <Form.Control id="psw" type="password" placeholder="" value={person.password}
                                           onChange={e => handleTextChange(e, "password")}/>
                         </Form.Group>
 
-                        <Button style={{marginTop:20}} variant="primary" type="submit">
+                        <Button id="ok" style={{marginTop:20}} variant="primary" type="submit">
 
                             OK
                         </Button>
