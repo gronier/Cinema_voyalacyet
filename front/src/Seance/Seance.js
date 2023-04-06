@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
@@ -7,6 +7,9 @@ import axios from "axios";
 import FullCalendar from "@fullcalendar/react";
 import {Container} from "react-bootstrap";
 import Create_seance from "./Create_seance";
+import {formatDate} from "@fullcalendar/core";
+import {useNavigate} from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 export default function Seance(props){
     let eventGuid = 0
@@ -30,6 +33,21 @@ export default function Seance(props){
             })
         }
     }
+    let name;
+    let token;
+    let role;
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if (props.cookies && props.cookies.voyalacyet) {
+            name = props.cookies.voyalacyet.name;
+            token = props.cookies.voyalacyet.token
+            role = jwt_decode(token)
+        }
+        console.log(token)
+        if(token === undefined || role.role !== 3) {
+            navigate('/')
+        }
+    },[])
 
     useEffect(() => {
         axios
@@ -43,7 +61,7 @@ export default function Seance(props){
     }, []);
 
     const seanceEvent = seance.map(seance => ({
-        title: 'Séance cinéma',
+        title: 'Film' + seance.id_film,
         start: seance.date_debut_seance,
         end: seance.date_fin_seance,
         id: seance.id_seance
@@ -87,10 +105,43 @@ export default function Seance(props){
             </>
         )
     }
+
     return (
         <div className='demo-app'>
+            <div className="container">
+                <table className="table">
+                    <thead>
+                    <tr>
+
+                        <th scope="col">Date de debut de seance</th>
+                        <th scope="col">Date de fin de seance</th>
+                        <th scope="col">Langage de la seance</th>
+                        <th scope="col">Version de la seance</th>
+                        <th scope="col">Prix de la seance</th>
+                        <th scope="col">ID du film</th>
+
+                        <th scope="col">Action</th>
+
+                    </tr>
+                    <tbody>
+                    {seance.map(i =>
+                        <tr key={i.id_seance}>
+                            <td>{i.date_debut_seance}</td>
+                            <td>{i.date_fin_seance}</td>
+                            <td>{i.language_seance}</td>
+                            <td>{i.version_seance}</td>
+                            <td>{i.prix_seance}</td>
+                            <td>{i.id_film}</td>
+
+                            <td><a href={`/updateSeance/${i.id_seance}`}  type="button" className="btn btn-warning">Modification</a></td>
+                        </tr>
+                    )}
+                    </tbody>
+                    </thead>
+                </table>
+            </div>
             <div className='demo-app-main'>
-                <a href="/createSeance" type="button" className="btn btn-success">Crée une séance</a>
+                <a href="/createSeance" type="button" className="btn btn-success">Create</a>
                 <Container className="mt-5">
                     <FullCalendar plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin ]}
                                       initialView="timeGridWeek"
