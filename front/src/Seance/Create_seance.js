@@ -54,30 +54,30 @@ export default function Create_seance(props) {
         <Container>
             <div className="row justify-content-md-center">
                 <div className="col col-lg-3">
-                    <h3 className="person-title">Créer une Seance</h3>
+                    <h3 className="person-title">Créer une Séance</h3>
                     <Form onSubmit={handleSubmitSeance}>
                         <Form.Group className="mb-3" controlId="dateDebutSeance">
-                            <Form.Label>Date de début de la seance</Form.Label>
+                            <Form.Label>Date de début de la séance</Form.Label>
                             <Form.Control type="datetime-local" placeholder="Date de début de la séance" value={seance.date_debut_seance}
                                           onChange={e => handleTextChangeSeance(e, "date_debut_seance")}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="dateFinSeance">
-                            <Form.Label>Date de fin de la seance</Form.Label>
+                            <Form.Label>Date de fin de la séance</Form.Label>
                             <Form.Control type="datetime-local" placeholder="Date de fin de la séance" value={seance.date_fin_seance}
                                           onChange={e => handleTextChangeSeance(e, "date_fin_seance")}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="languageSeance">
-                            <Form.Label>Language de la seance</Form.Label>
+                            <Form.Label>Language de la séance</Form.Label>
                             <Form.Control type="string" placeholder="Language seance" value={seance.language_seance}
                                           onChange={e => handleTextChangeSeance(e, "language_seance")}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="versionSeance">
-                            <Form.Label>Version de la seance</Form.Label>
+                            <Form.Label>Version de la séance</Form.Label>
                             <Form.Control type="string" placeholder="Version de la séance" value={seance.version_seance}
                                           onChange={e => handleTextChangeSeance(e, "version_seance")}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="languageSeance">
-                            <Form.Label>Prix de la seance</Form.Label>
+                            <Form.Label>Prix de la séance</Form.Label>
                             <Form.Control type="number" placeholder="Prix seance" value={seance.prix_seance}
                                           onChange={e => handleTextChangeSeance(e, "prix_seance")}/>
                         </Form.Group>

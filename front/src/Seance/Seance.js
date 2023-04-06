@@ -90,7 +90,7 @@ export default function Seance(props){
     return (
         <div className='demo-app'>
             <div className='demo-app-main'>
-                <a href="/createSeance" type="button" className="btn btn-success">Crée une séance</a>
+                <a href="/createSeance" type="button" className="btn btn-success">Créer une séance</a>
                 <Container className="mt-5">
                     <FullCalendar plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin ]}
                                       initialView="timeGridWeek"

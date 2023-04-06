@@ -113,7 +113,7 @@ export default function Reservation(props) {
             let nb = null;
 
             while(nb === null || isNaN(nb)) {
-                nb = window.prompt("Veuillez saisir un nombre de place ?");
+                nb = window.prompt("Veuillez saisir un nombre de place :");
             }
 
             var confirm =  window.confirm("Voulez-vous confirmer l'action ?");
@@ -162,13 +162,6 @@ export default function Reservation(props) {
         }
     }
 
-    function getTestId(id) {
-        return "toto";
-    }
-
-
-
-
     return (
 
 
@@ -185,7 +178,7 @@ export default function Reservation(props) {
                     <thead>
                     <tr>
 
-                        <th scope="col">Nom seance </th>
+                        <th scope="col">Nom séance </th>
                         <th scope="col">Nombre de places</th>
                         <th scope="col">Action</th>
 
@@ -199,7 +192,7 @@ export default function Reservation(props) {
 
                             <td>{i.nb_place}</td>
                             <td>
-                                <button onClick={() => deleteReservation(i.id_reservation)} type="button" className="btn btn-danger" >Annulé</button>
+                                <button onClick={() => deleteReservation(i.id_reservation)} type="button" className="btn btn-danger" >Annuler</button>
 
                             </td>
 
@@ -212,7 +205,7 @@ export default function Reservation(props) {
                 </table>
 
                 <div className="p-2 d-flex justify-content-between">
-                    <div>Les seance en cours</div>
+                    <div>Les séances en cours</div>
                 </div>
 
                 <table className="table">
@@ -241,7 +234,7 @@ export default function Reservation(props) {
                                 <td>{i.version_seance}</td>
                                 <td>{i.prix_seance} €</td>
                                 <td>
-                                    <button type="button" className="btn btn-success" onClick={() => createReservation(i.id_seance)} >Réservé</button>
+                                    <button type="button" className="btn btn-success" onClick={() => createReservation(i.id_seance)} >Réserver</button>
 
                                 </td>
 
