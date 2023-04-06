@@ -28,7 +28,7 @@ export default function Film(props) {
     }, []);
 
 
-    console.log(Film);
+
 
 
     return (
