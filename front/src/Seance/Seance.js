@@ -123,6 +123,8 @@ export default function Seance(props){
                         <th scope="col">Action</th>
 
                     </tr>
+                    </thead>
+
                     <tbody>
                     {seance.map(i =>
                         <tr key={i.id_seance}>
@@ -137,10 +139,9 @@ export default function Seance(props){
                         </tr>
                     )}
                     </tbody>
-                    </thead>
                 </table>
             </div>
-            <div className='demo-app-main'><<<<<<< fix_orthographe
+            <div className='demo-app-main'>
                 <a href="/createSeance" type="button" className="btn btn-success">Créer une séance</a>
 
                 <Container className="mt-5">
