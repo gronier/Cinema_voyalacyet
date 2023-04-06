@@ -18,6 +18,7 @@ import Update_salle from "./Salle/Update_salle";
 import jwt_decode from "jwt-decode";
 import Create_seance from "./Seance/Create_seance";
 import Film2 from "./Reservation/film";
+import Update_seance from "./Seance/Update_seance"
 
 
 
@@ -31,7 +32,6 @@ function MyNavBar(props) {
         name = props.cookies.voyalacyet.name;
         token = props.cookies.voyalacyet.token
         var role = jwt_decode(token)
-        console.log(role)
     }
 
     return (
@@ -85,6 +85,7 @@ export default function App() {
                 <Route exact={true} path="/reservation" element={<Reservation cookies={cookies}/>}/>
                 <Route exact={true} path="/seance" element={<Seance cookies={cookies}/>}/>
                 <Route exact={true} path="/createSeance" element={<Create_seance cookies={cookies}/>}/>
+                <Route exact={true} path="/updateSeance/:id" element={<Update_seance cookies={cookies}/>}/>
                 <Route exact={true} path="/signin" element={<Signin setCookie={setCookie}/>}/>
                 <Route exact={true} path="/signup" element={<Signup/>}/>
                 <Route exact={true} path="/films" element={<Film/>}/>
