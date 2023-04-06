@@ -19,7 +19,7 @@ export default function CreateReservation(props) {
     async function handleSubmitReservation(e) {
         e.preventDefault();
         try {
-            console.log(User.id , +Reservation.nb_place , +params.id);
+
 
             await axios.post("http://localhost:8000/reservation" , {
                 id_user: User.id,
@@ -76,7 +76,7 @@ export default function CreateReservation(props) {
     }, []);
 
 
-    console.log(Seance , Film);
+
     return (
         <Container>
             <div className="row justify-content-md-center">

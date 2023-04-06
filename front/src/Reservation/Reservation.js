@@ -110,7 +110,7 @@ export default function Reservation(props) {
 
 
 
-console.log(Reservation);
+
 
     return (
 
