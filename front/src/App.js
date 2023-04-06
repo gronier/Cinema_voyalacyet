@@ -18,7 +18,9 @@ import Update_salle from "./Salle/Update_salle";
 import jwt_decode from "jwt-decode";
 import Create_seance from "./Seance/Create_seance";
 import Film2 from "./Reservation/film";
+import CreateReservation from "./Reservation/CreateReservation";
 import Update_seance from "./Seance/Update_seance"
+
 
 
 
@@ -83,6 +85,7 @@ export default function App() {
             <Routes>
                 <Route exact={true} path="/" element={<Home/>}/>
                 <Route exact={true} path="/reservation" element={<Reservation cookies={cookies}/>}/>
+                <Route exact={true} path="/reservation/create/:id/:id_film" element={<CreateReservation cookies={cookies}/>}/>
                 <Route exact={true} path="/seance" element={<Seance cookies={cookies}/>}/>
                 <Route exact={true} path="/createSeance" element={<Create_seance cookies={cookies}/>}/>
                 <Route exact={true} path="/updateSeance/:id" element={<Update_seance cookies={cookies}/>}/>
