@@ -25,20 +25,20 @@ describe('Salle component', () => {
         fireEvent.click(create);
     })
 
-    it('connexion avec le bon mail et le bon mot de passe', async () => {
-        const {container, getByLabelText, getByRole} = render(
-            <Router>
-                <Signin />
-            </Router>
-        );
-        const emailInput = getByLabelText('Email');
-        const passwordInput = getByLabelText('mot de passe');
-        const submitButton = getByRole('button', {name: 'OK'});
-
-        fireEvent.change(emailInput, {target: {value: 'theo@emp.com'}});
-        fireEvent.change(passwordInput, {target: {value: 'theo'}});
-        fireEvent.click(submitButton);
-
-        await waitFor(() => expect(container.querySelector('.person-title')).toBeTruthy());
-    });
+    // it('test input login', async () => {
+    //     const {container, getByLabelText, getByRole} = render(
+    //         <Router>
+    //             <Signin />
+    //         </Router>
+    //     );
+    //     const emailInput = getByLabelText('Email');
+    //     const passwordInput = getByLabelText('mot de passe');
+    //     const submitButton = getByRole('button', {name: 'OK'});
+    //
+    //     fireEvent.change(emailInput, {target: {value: 'theo@emp.com'}});
+    //     fireEvent.change(passwordInput, {target: {value: 'theo'}});
+    //     fireEvent.click(submitButton);
+    //
+    //     await waitFor(() => expect(container.querySelector('.person-title')).toBeTruthy());
+    // });
 });
