@@ -4,8 +4,6 @@ import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import {useCookies} from "react-cookie";
-import {useNavigate} from "react-router-dom";
-
 
 
 export default function Reservation(props) {
@@ -109,64 +107,8 @@ export default function Reservation(props) {
         }
     }
 
-    async function createReservation(id) {
-        try {
-            console.log(User.id);
-            let nb = null;
-
-            while(nb === null || isNaN(nb)) {
-                nb = window.prompt("Veuillez saisir un nombre de place ?");
-            }
-
-            var confirm =  window.confirm("Voulez-vous confirmer l'action ?");
-
-            if(confirm == true)
-            {
-                console.log(nb);
-
-                await axios.post("http://localhost:8000/reservation", {
-                    id_user: User.id,
-                    nb_place: nb,
-                    id_seance: id
-                }) ;
-                window.location.reload();
 
 
-            }
-
-
-
-        } catch (error) {
-            console.log("error", error);
-        }
-    }
-
-    async function getAffiche(id) {
-        try {
-
-             axios.get(
-                 "http://localhost:8000/film/"+id
-             ).then((response) => {
-                const data = response.data;
-
-
-                return data.affiche;
-             })
-
-
-
-
-
-
-
-        } catch (error) {
-            console.log("error", error);
-        }
-    }
-
-    function getTestId(id) {
-        return "toto";
-    }
 
 
 
@@ -187,7 +129,7 @@ export default function Reservation(props) {
                     <thead>
                     <tr>
 
-                        <th scope="col">Nom seance </th>
+                        <th scope="col">Nom séance </th>
                         <th scope="col">Nombre de places</th>
                         <th scope="col">Action</th>
 
@@ -201,7 +143,7 @@ export default function Reservation(props) {
 
                             <td>{i.nb_place}</td>
                             <td>
-                                <button onClick={() => deleteReservation(i.id_reservation)} type="button" className="btn btn-danger" >Annulé</button>
+                                <button onClick={() => deleteReservation(i.id_reservation)} type="button" className="btn btn-danger" >Annuler</button>
 
                             </td>
 
@@ -214,13 +156,13 @@ export default function Reservation(props) {
                 </table>
 
                 <div className="p-2 d-flex justify-content-between">
-                    <div>Les seance en cours</div>
+                    <div>Les séances en cours</div>
                 </div>
 
                 <table className="table">
                     <thead>
                     <tr>
-
+                        <th scope="col">Id</th>
                         <th scope="col">Film </th>
                         <th scope="col">Langue</th>
                         <th scope="col">Version</th>
@@ -237,13 +179,16 @@ export default function Reservation(props) {
 
                             <tr key={i.id_seance}>
 
+                                <td>{i.id_seance}</td>
                                 <td><a href={`/film/${i.id_film}`}  type="button" className="btn btn-warning">Voir le film {i.id_film}</a></td>
 
                                 <td>{i.language_seance}</td>
                                 <td>{i.version_seance}</td>
                                 <td>{i.prix_seance} €</td>
                                 <td>
-                                    <button type="button" className="btn btn-success" onClick={() => createReservation(i.id_seance)} >Réservé</button>
+
+                                    <a href={`/reservation/create/${i.id_seance}/${i.id_film}`} type="button" className="btn btn-success"  >Réservé</a>
+
 
                                 </td>
 

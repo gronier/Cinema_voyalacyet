@@ -4,7 +4,7 @@
 
 ## Organisation
 
-### Notre Equipe:
+### Notre équipe:
 
 - Corentin GASPARD
 - Antoine LEVA
@@ -13,19 +13,19 @@
 
 ### Présentation de l'application :
 
-Durant ce projet, nous avons decidé de developper un site permettant de reserver des places de cinéma. 
+Durant ce projet, nous avons decidé de developper un site permettant de réserver des places de cinéma. 
 Le nom de notre site est : Cinéma-Voyalacyet.
 
 
 ### Présentation des outils utilisés
 
-L'IDE que nous avons utilisé est WebStrom  de la suite jetbrain, 
-l'outils de versionning et de trello utilisé est GitHub. 
-Afin de nous transmettre les lien et info pour nous aidez, 
-nous communiquons sur Discord dans un serveur que nous avons
-crée pour le projet.
+L'IDE que nous avons utilisé est WebStorm  de la suite JetBrains, 
+l'outil de versionning et de Trello utilisé est GitHub. 
+Afin de nous transmettre les liens et informations, pour nous aider, 
+nous communiquions sur Discord dans un serveur que nous avons
+créé pour le projet.
 
-Les packages que nous avons utiliser sont les suivants : 
+Les packages que nous avons utilisé sont les suivants : 
 
 Back :
 ```
@@ -87,8 +87,8 @@ npm install
 npm run start 
 ```
 
-Afin d'acceder a toutes les pages , vous devez crée un compte (le compte client et Etudient on acces a la page reservation et le roles employé a acces a toutes les pages).
-une fois le compte crée vous allez etre rediriger vers la page login afin que vous vous connecter puis vous allez être rediriger a la page d'accueil puis vous pourrez aller sur les pages que vous souhaiitez.
+Afin d'accéder à toutes les pages, vous devez créer un compte (le compte Client et Etudiant ont accès a la page réservation et le role Employé a accès a toutes les pages).
+Une fois le compte créé, vous allez être redirigé vers la page "Login" afin de vous connecter puis vous allez être redirigé à la page d'accueil et ensuite vous pourrez naviguer sur le site comme vous le voulez.
 
 ## Rétrospective
 

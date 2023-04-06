@@ -66,7 +66,7 @@ CREATE TABLE Reservation
 );
 
 INSERT INTO Role (name_role) VALUES ('Client'),('Etudiant'),('Employe');
-INSERT INTO Film(nom_film, affiche, duree_film, description_film) VALUES ('Mario','dffffff',92,'Film animé mario');
+INSERT INTO Film(nom_film, affiche, duree_film, description_film) VALUES ('Mario','https://global-img.gamergen.com/super-mario-bros-le-film-poster-03-02-2023_0901015412.jpg',92,'Film animé mario');
 INSERT INTO Salle(nom_salle, nbPlace_salle) VALUES ('test',69);
 INSERT INTO Seance(language_seance, version_seance, date_debut_seance, date_fin_seance, prix_seance, id_film) values ('VF','2D','2023-04-05 12:00','2023-04-05 14:00',10,1)
 

@@ -17,7 +17,10 @@ import Creation_salle from "./Salle/Creation_salle";
 import Update_salle from "./Salle/Update_salle";
 import jwt_decode from "jwt-decode";
 import Create_seance from "./Seance/Create_seance";
-import Film from "./Reservation/film";
+import Film2 from "./Reservation/film";
+import CreateReservation from "./Reservation/CreateReservation";
+import Update_seance from "./Seance/Update_seance"
+
 
 
 
@@ -31,7 +34,6 @@ function MyNavBar(props) {
         name = props.cookies.voyalacyet.name;
         token = props.cookies.voyalacyet.token
         var role = jwt_decode(token)
-        console.log(role)
     }
 
     return (
@@ -47,10 +49,10 @@ function MyNavBar(props) {
 
                 < />: <>
                     <Button variant="btn btn-primary" onClick={() => navigate("/")}>Accueil</Button>
-                    <Button variant="btn btn-primary" onClick={() => navigate("/reservation")}>Reservation</Button>
+                    <Button variant="btn btn-primary" onClick={() => navigate("/reservation")}>Réservation</Button>
                 < />}
                 {token !== undefined && role.role ===3 ? < >
-                    <Button variant="btn btn-primary" onClick={() => navigate("/seance")}>Seance</Button>
+                    <Button variant="btn btn-primary" onClick={() => navigate("/seance")}>Séance</Button>
                     <Button variant="btn btn-primary" onClick={() => navigate("/Salle")}>Salle</Button>
                     <Button variant="btn btn-primary" onClick={() => navigate("/films")}>Films</Button>
                 < /> : <></>
@@ -83,15 +85,17 @@ export default function App() {
             <Routes>
                 <Route exact={true} path="/" element={<Home/>}/>
                 <Route exact={true} path="/reservation" element={<Reservation cookies={cookies}/>}/>
+                <Route exact={true} path="/reservation/create/:id/:id_film" element={<CreateReservation cookies={cookies}/>}/>
                 <Route exact={true} path="/seance" element={<Seance cookies={cookies}/>}/>
                 <Route exact={true} path="/createSeance" element={<Create_seance cookies={cookies}/>}/>
+                <Route exact={true} path="/updateSeance/:id" element={<Update_seance cookies={cookies}/>}/>
                 <Route exact={true} path="/signin" element={<Signin setCookie={setCookie}/>}/>
                 <Route exact={true} path="/signup" element={<Signup/>}/>
                 <Route exact={true} path="/films" element={<Film/>}/>
                 <Route exact={true} path="/createFilm" element={<FormFilm/>}/>
                 <Route exact={true} path="/updateFilm/:id" element={<UpdateFormFilm/>}/>
                 <Route exact={true} path="/Salle" element={<Salle cookies={cookies}/>}/>
-                <Route exact={true} path="/film/:id" element={<Film/>}/>
+                <Route exact={true} path="/film/:id" element={<Film2/>}/>
                 <Route exact={true} path="/createSalle" element={<Creation_salle cookies={cookies}/>}/>
                 <Route exact={true} path="/updateSalle/:id" element={<Update_salle cookies={cookies}/>}/>
 

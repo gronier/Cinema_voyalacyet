@@ -87,7 +87,7 @@ export default function Salle(props) {
         <div className="container">
             <div className="p-2 d-flex justify-content-between">
                 <div>Gestion des salles</div>
-                <a href="/createSalle" type="button" className="btn btn-success">Crée une salle</a>
+                <a href="/createSalle" type="button" className="btn btn-success">Créer une salle</a>
 
 
             </div>
