@@ -49,10 +49,10 @@ function MyNavBar(props) {
 
                 < />: <>
                     <Button variant="btn btn-primary" onClick={() => navigate("/")}>Accueil</Button>
-                    <Button variant="btn btn-primary" onClick={() => navigate("/reservation")}>Reservation</Button>
+                    <Button variant="btn btn-primary" onClick={() => navigate("/reservation")}>Réservation</Button>
                 < />}
                 {token !== undefined && role.role ===3 ? < >
-                    <Button variant="btn btn-primary" onClick={() => navigate("/seance")}>Seance</Button>
+                    <Button variant="btn btn-primary" onClick={() => navigate("/seance")}>Séance</Button>
                     <Button variant="btn btn-primary" onClick={() => navigate("/Salle")}>Salle</Button>
                     <Button variant="btn btn-primary" onClick={() => navigate("/films")}>Films</Button>
                 < /> : <></>

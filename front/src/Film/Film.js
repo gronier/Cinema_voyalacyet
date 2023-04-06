@@ -46,7 +46,7 @@ export default function Film(props){
                     <div>Gestion des Films</div>
                 </div>
 
-                <a href="/createFilm">Créer un film</a>
+                <a href="/createFilm" className="btn btn-success">Créer un film</a>
 
                 <table className="table">
                     <thead>

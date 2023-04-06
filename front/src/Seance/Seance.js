@@ -140,8 +140,9 @@ export default function Seance(props){
                     </thead>
                 </table>
             </div>
-            <div className='demo-app-main'>
-                <a href="/createSeance" type="button" className="btn btn-success">Create</a>
+            <div className='demo-app-main'><<<<<<< fix_orthographe
+                <a href="/createSeance" type="button" className="btn btn-success">Créer une séance</a>
+
                 <Container className="mt-5">
                     <FullCalendar plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin ]}
                                       initialView="timeGridWeek"
